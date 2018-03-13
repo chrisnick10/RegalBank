@@ -46,12 +46,6 @@ public class LoginGUI extends javax.swing.JFrame {
 
         jLabel1.setText("RegalBank Database Access");
 
-        LoginField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LoginFieldActionPerformed(evt);
-            }
-        });
-
         LoginLabel.setText("Login:");
 
         PasswordLabel.setText("Password:");
@@ -106,10 +100,6 @@ public class LoginGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void LoginFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_LoginFieldActionPerformed
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
         // TODO add your handling code here:
