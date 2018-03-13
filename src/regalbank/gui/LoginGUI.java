@@ -17,12 +17,12 @@ import java.sql.*;
  *
  * @author reedtdan
  */
-public class DataBaseGUI extends javax.swing.JFrame {
+public class LoginGUI extends javax.swing.JFrame {
 
     public static Connection c;
-    private CustomerInput ci;
+    private CustomerInputGUI ci;
     /** Creates new form DataBaseGUI */
-    public DataBaseGUI() {
+    public LoginGUI() {
         initComponents();
     }
 
@@ -115,7 +115,7 @@ public class DataBaseGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         // If customer type
-        ci = new CustomerInput();
+        ci = new CustomerInputGUI();
         ci.setVisible(true);
         this.setVisible(false);
         
@@ -143,20 +143,21 @@ public class DataBaseGUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DataBaseGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DataBaseGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DataBaseGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DataBaseGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DataBaseGUI().setVisible(true);
+                new LoginGUI().setVisible(true);
             }
         });
     }
@@ -171,7 +172,7 @@ public class DataBaseGUI extends javax.swing.JFrame {
 }
     
     public static ResultSet getData(String sql) throws Exception {
-        ResultSet rs = DataBaseGUI.getConnection().createStatement().executeQuery(sql);
+        ResultSet rs = LoginGUI.getConnection().createStatement().executeQuery(sql);
         return rs;
     }
 

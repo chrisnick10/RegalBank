@@ -5,6 +5,8 @@
  */
 package regalbank;
 
+import regalbank.gui.LoginGUI;
+
 /**
  *
  * @author christian
@@ -16,6 +18,8 @@ public class RegalBank {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        LoginGUI login = new LoginGUI();
+        login.setVisible(true);
     }
     
 }
