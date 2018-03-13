@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package databasegui;
+package regalbank.gui;
 
 import java.sql.*;
 import java.awt.GridLayout;
