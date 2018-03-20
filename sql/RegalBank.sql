@@ -2,7 +2,7 @@ CREATE DATABASE RegalBank;
 USE RegalBank;
 
 CREATE Table Customer (
-	CU_ID int not null PRIMARY KEY,
+	CU_ID int PRIMARY KEY auto_increment,
     CU_Student enum('y','n'),
     CU_CreditHistory enum ('b','g','e'),
 	CU_FirstName varchar(50),
