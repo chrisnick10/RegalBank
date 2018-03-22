@@ -127,8 +127,6 @@ CREATE Table Interest (
     I_AccountID int
 );
 
+#FLUSH privileges;
 
-FLUSH privileges;
-
-
-SET PASSWORD FOR 'root'@'localhost' = PASSWORD('');
+#SET PASSWORD FOR 'root'@'localhost' = PASSWORD('');
