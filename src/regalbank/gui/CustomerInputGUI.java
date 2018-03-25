@@ -19,6 +19,11 @@ public class CustomerInputGUI extends javax.swing.JFrame {
     /**
      * Creates new form CustomerInput
      */
+    
+    private String Gender_str = "yes";
+    private char Student_str = 'y';
+    private char Credit_str = 'b';
+    
     public CustomerInputGUI() {
         initComponents();
         GenderMale.setActionCommand(GenderMale.getText());
@@ -126,27 +131,67 @@ public class CustomerInputGUI extends javax.swing.JFrame {
 
         CreditButtonGroup.add(GoodButton);
         GoodButton.setText("Good");
+        GoodButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GoodButtonActionPerformed(evt);
+            }
+        });
 
         CreditButtonGroup.add(BadButton);
         BadButton.setText("Bad");
+        BadButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BadButtonActionPerformed(evt);
+            }
+        });
 
         CreditButtonGroup.add(ExButton);
-        ExButton.setText("Execllent");
+        ExButton.setText("Exellent");
+        ExButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExButtonActionPerformed(evt);
+            }
+        });
 
         StudentButtonGroup.add(StudentYes);
         StudentYes.setText("Yes");
+        StudentYes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StudentYesActionPerformed(evt);
+            }
+        });
 
         StudentButtonGroup.add(jRadioButton2);
         jRadioButton2.setText("No");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
 
         GenderButtonGroup.add(GenderMale);
         GenderMale.setText("Male");
+        GenderMale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GenderMaleActionPerformed(evt);
+            }
+        });
 
         GenderButtonGroup.add(GenderFemale);
         GenderFemale.setText("Female");
+        GenderFemale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GenderFemaleActionPerformed(evt);
+            }
+        });
 
         GenderButtonGroup.add(GenderOther);
         GenderOther.setText("Other");
+        GenderOther.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GenderOtherActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -209,7 +254,7 @@ public class CustomerInputGUI extends javax.swing.JFrame {
                                 .addComponent(ExButton))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(StudentYes)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jRadioButton2))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(GenderMale)
@@ -285,7 +330,7 @@ public class CustomerInputGUI extends javax.swing.JFrame {
         String Num_str = AddrNum.getText();
         String State_str = AddrState.getText();
         String Street_str = AddrStreet.getText();
-        String ZIP_str = AddrStreet.getText();
+        String ZIP_str = AddrZIP.getText();
         String Day_str = DOBDay.getText();
         String Month_str = DOBMonth.getText();
         String Year_str = DOBYear.getText();
@@ -296,13 +341,6 @@ public class CustomerInputGUI extends javax.swing.JFrame {
         String Email_str = Email.getText();
         
         String Date_str = Year_str + "-" + Month_str + "-" + Day_str;
-        
-        
-        String Gender_str = "male"; //GenderButtonGroup.getSelection().toString();
-        char Student_str = 'y'; //StudentButtonGroup.getSelection().toString();
-        char Credit_str = 'e'; //CreditButtonGroup.getSelection().toString();
-        
-        
         
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -321,12 +359,13 @@ public class CustomerInputGUI extends javax.swing.JFrame {
             ResultSet set = statement.executeQuery(q5);
             
             System.out.println("Executed Query");
-            System.out.println(set==null);
-            while (set.next()) {
-                System.out.println("Looping");
-                System.out.println(set.getString(1)); //gets the first column's rows.
-                System.out.println(set.getString(4)); //gets the first column's rows.
 
+            while (set.next()) {
+                
+                for ( int i = 1; i <=16; i++ ) {
+                    System.out.print(set.getString(i) + " "); 
+                }
+                System.out.println();
              }
             connection.close();
         } catch ( ClassNotFoundException e) {
@@ -336,6 +375,46 @@ public class CustomerInputGUI extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_CISubmitActionPerformed
+
+    private void BadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BadButtonActionPerformed
+        // TODO add your handling code here:
+        Credit_str = 'b';
+    }//GEN-LAST:event_BadButtonActionPerformed
+
+    private void GenderOtherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenderOtherActionPerformed
+        // TODO add your handling code here:
+        Gender_str = "other";
+    }//GEN-LAST:event_GenderOtherActionPerformed
+
+    private void GoodButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GoodButtonActionPerformed
+        // TODO add your handling code here:
+        Credit_str = 'g';
+    }//GEN-LAST:event_GoodButtonActionPerformed
+
+    private void ExButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExButtonActionPerformed
+        // TODO add your handling code here:
+        Credit_str = 'e';
+    }//GEN-LAST:event_ExButtonActionPerformed
+
+    private void StudentYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StudentYesActionPerformed
+        // TODO add your handling code here:
+        Student_str = 'y';
+    }//GEN-LAST:event_StudentYesActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        // TODO add your handling code here:
+        Student_str = 'n';
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void GenderMaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenderMaleActionPerformed
+        // TODO add your handling code here:
+        Gender_str = "male";
+    }//GEN-LAST:event_GenderMaleActionPerformed
+
+    private void GenderFemaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenderFemaleActionPerformed
+        // TODO add your handling code here:
+        Gender_str = "female";
+    }//GEN-LAST:event_GenderFemaleActionPerformed
 
     /**
      * @param args the command line arguments

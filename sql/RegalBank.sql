@@ -11,7 +11,7 @@ CREATE Table Customer (
     CU_DOB date,
     CU_Number int,
     CU_Street varchar(100),
-    CU_ZIP varchar(5),
+    CU_ZIP varchar(10),
     CU_City varchar(100),
     CU_State varchar(50),
     CU_Country varchar(100),
@@ -126,6 +126,7 @@ CREATE Table Interest (
     I_Rate decimal,
     I_AccountID int
 );
+
 
 #FLUSH privileges;
 
