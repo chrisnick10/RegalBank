@@ -62,8 +62,9 @@ CREATE Table Complaint (
 	CO_ComplaintFrom int,
     CO_ComplaintTo int,
     CO_Subject varchar(255),
+    CO_Message varchar(255),
     CO_Date date,
-    CO_ID int not null PRIMARY KEY
+    CO_ID int not null PRIMARY KEY auto_increment
 );
 
 CREATE Table TransactionInfo (
@@ -97,7 +98,8 @@ CREATE Table Card (
     CR_RewardBonus double,
     CR_LateFee double,
     CR_AnnualFee double,
-    CR_Max double
+    CR_Max double,
+    CR_RequiredCredit enum('b','g','e')
 );
 
 CREATE Table Loan (
@@ -127,6 +129,7 @@ CREATE Table Interest (
     I_AccountID int
 );
 
+DROP TABLE CARD;
 
 #FLUSH privileges;
 

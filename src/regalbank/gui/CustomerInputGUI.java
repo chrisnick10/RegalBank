@@ -69,10 +69,14 @@ public class CustomerInputGUI extends javax.swing.JFrame {
         BadButton = new javax.swing.JRadioButton();
         ExButton = new javax.swing.JRadioButton();
         StudentYes = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        StudentNo = new javax.swing.JRadioButton();
         GenderMale = new javax.swing.JRadioButton();
         GenderFemale = new javax.swing.JRadioButton();
         GenderOther = new javax.swing.JRadioButton();
+        UpdateButton = new javax.swing.JButton();
+        DeleteButton = new javax.swing.JButton();
+        LoadIDButton = new javax.swing.JButton();
+        IDField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,17 +100,17 @@ public class CustomerInputGUI extends javax.swing.JFrame {
 
         jLabel4.setText("Address");
 
-        AddrNum.setText("500");
+        AddrNum.setText("Number");
 
-        AddrStreet.setText("Campus");
+        AddrStreet.setText("Street");
 
-        AddrZIP.setText("48309");
+        AddrZIP.setText("ZIPCODE");
 
-        AddrCity.setText("Rochester");
+        AddrCity.setText("CITY");
 
         AddrState.setText("MI");
 
-        AddrCountry.setText("United States");
+        AddrCountry.setText("Country");
 
         jLabel5.setText("Email");
 
@@ -161,11 +165,11 @@ public class CustomerInputGUI extends javax.swing.JFrame {
             }
         });
 
-        StudentButtonGroup.add(jRadioButton2);
-        jRadioButton2.setText("No");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        StudentButtonGroup.add(StudentNo);
+        StudentNo.setText("No");
+        StudentNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                StudentNoActionPerformed(evt);
             }
         });
 
@@ -193,76 +197,100 @@ public class CustomerInputGUI extends javax.swing.JFrame {
             }
         });
 
+        UpdateButton.setText("Update");
+
+        DeleteButton.setText("Delete");
+
+        LoadIDButton.setText("LoadID:");
+        LoadIDButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LoadIDButtonActionPerformed(evt);
+            }
+        });
+
+        IDField.setText("0");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 433, Short.MAX_VALUE)
-                        .addComponent(CISubmit))
-                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(LoadIDButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(IDField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4))
-                        .addGap(7, 7, 7)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(FNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(85, 85, 85)
+                                .addComponent(DeleteButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(MNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(LNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(DOBDay, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(DOBMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(DOBYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(Phone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(AddrNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(AddrStreet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(AddrZIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(AddrCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(AddrState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(AddrCountry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel5)
+                                .addComponent(CISubmit))
+                            .addComponent(UpdateButton)))
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel6))
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel5)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(BadButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(GoodButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ExButton))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel4))
+                                .addGap(25, 25, 25)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(FNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(MNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(LNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(DOBDay, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(DOBMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(DOBYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(Phone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(AddrNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(AddrStreet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(AddrZIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(AddrCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(AddrState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(AddrCountry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(StudentYes)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButton2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(GenderMale)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(GenderFemale)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(GenderOther)))))
-                .addContainerGap())
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel6))
+                                .addGap(44, 44, 44)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(BadButton)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(GoodButton)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(ExButton))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(StudentYes)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(StudentNo))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(GenderMale)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(GenderFemale)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(GenderOther)))))))
+                .addGap(16, 16, 16))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -308,7 +336,7 @@ public class CustomerInputGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(StudentYes)
-                    .addComponent(jRadioButton2))
+                    .addComponent(StudentNo))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
@@ -316,8 +344,16 @@ public class CustomerInputGUI extends javax.swing.JFrame {
                         .addComponent(GenderMale)
                         .addComponent(GenderFemale)
                         .addComponent(GenderOther)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addComponent(CISubmit))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(CISubmit)
+                        .addComponent(UpdateButton)
+                        .addComponent(DeleteButton))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(LoadIDButton)
+                        .addComponent(IDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         pack();
@@ -401,10 +437,10 @@ public class CustomerInputGUI extends javax.swing.JFrame {
         Student_str = 'y';
     }//GEN-LAST:event_StudentYesActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+    private void StudentNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StudentNoActionPerformed
         // TODO add your handling code here:
         Student_str = 'n';
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    }//GEN-LAST:event_StudentNoActionPerformed
 
     private void GenderMaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenderMaleActionPerformed
         // TODO add your handling code here:
@@ -415,6 +451,85 @@ public class CustomerInputGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         Gender_str = "female";
     }//GEN-LAST:event_GenderFemaleActionPerformed
+
+    private void LoadIDButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoadIDButtonActionPerformed
+        // TODO add your handling code here:
+        
+        String City_str = AddrCity.getText();
+        String Country_str = AddrCountry.getText();
+        String Num_str = AddrNum.getText();
+        String State_str = AddrState.getText();
+        String Street_str = AddrStreet.getText();
+        String ZIP_str = AddrZIP.getText();
+        String Day_str = DOBDay.getText();
+        String Month_str = DOBMonth.getText();
+        String Year_str = DOBYear.getText();
+        String FName_str = FNameField.getText();
+        String MName_str = MNameField.getText();
+        String LName_str = LNameField.getText();
+        String Phone_str = Phone.getText();
+        String Email_str = Email.getText();
+        
+        String Gender_str = "male";
+        
+        try { 
+            Class.forName("com.mysql.jdbc.Driver");
+            String connectionURL =
+"jdbc:mysql://localhost:3306/RegalBank?autoReconnect=true&useSSL=false";
+            Connection connection = DriverManager.getConnection(connectionURL, "root", "");
+            Statement statement = connection.createStatement();      
+            String query = "select * from Customer where CU_ID = \"" + IDField.getText() + "\"";
+            ResultSet set = statement.executeQuery(query);
+            
+            System.out.println("Executed Query");
+
+            while (set.next()) {
+                
+                String student_str = set.getString(2);
+                switch(student_str) {
+                    case "y" :   StudentYes.doClick();
+                                    break;
+                    case "n" :   StudentNo.doClick();
+                                    break;
+                    default : 
+                }
+                
+                String credit_str = set.getString(3);
+                switch(credit_str) {
+                    case "b" :  BadButton.doClick();
+                                    break;
+                    case "g" :  GoodButton.doClick();
+                                    break;
+                    case "e" :  ExButton.doClick();
+                                    break;
+                    default : 
+                }
+                
+                FNameField.setText(set.getString(4));
+                MNameField.setText(set.getString(5));
+                LNameField.setText(set.getString(6));
+                Phone.setText(set.getString(16));
+     
+                String gender_str = set.getString(15);
+                switch(gender_str) {
+                    case "male" :   GenderMale.doClick();
+                                    break;
+                    case "female":  GenderFemale.doClick();
+                                    break;
+                    case "other":   GenderOther.doClick();
+                                    break;
+                    default : 
+                }
+                
+             }
+           connection.close();
+        } catch ( ClassNotFoundException e) {
+            System.out.println("ClassException");
+        } catch ( SQLException e) {
+            System.out.println("SQLEXCEPTION");
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_LoadIDButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -465,6 +580,7 @@ public class CustomerInputGUI extends javax.swing.JFrame {
     private javax.swing.JTextField DOBDay;
     private javax.swing.JTextField DOBMonth;
     private javax.swing.JTextField DOBYear;
+    private javax.swing.JButton DeleteButton;
     private javax.swing.JTextField Email;
     private javax.swing.JRadioButton ExButton;
     private javax.swing.JTextField FNameField;
@@ -473,11 +589,15 @@ public class CustomerInputGUI extends javax.swing.JFrame {
     private javax.swing.JRadioButton GenderMale;
     private javax.swing.JRadioButton GenderOther;
     private javax.swing.JRadioButton GoodButton;
+    private javax.swing.JTextField IDField;
     private javax.swing.JTextField LNameField;
+    private javax.swing.JButton LoadIDButton;
     private javax.swing.JTextField MNameField;
     private javax.swing.JTextField Phone;
     private javax.swing.ButtonGroup StudentButtonGroup;
+    private javax.swing.JRadioButton StudentNo;
     private javax.swing.JRadioButton StudentYes;
+    private javax.swing.JButton UpdateButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -487,6 +607,5 @@ public class CustomerInputGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JRadioButton jRadioButton2;
     // End of variables declaration//GEN-END:variables
 }
