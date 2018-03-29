@@ -3,7 +3,6 @@
 -- Host: localhost    Database: regalbank
 -- ------------------------------------------------------
 -- Server version	5.7.21-log
-
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -220,11 +219,8 @@ CREATE TABLE `customer` (
   `CU_Email` varchar(50) DEFAULT NULL,
   `CU_Gender` enum('male','female','other') DEFAULT NULL,
   `CU_Phone` varchar(12) DEFAULT NULL,
-  `CU_Username` varchar(50) NOT NULL,
   PRIMARY KEY (`CU_ID`),
-  UNIQUE KEY `CU_ID` (`CU_ID`),
-  UNIQUE KEY `CU_Username` (`CU_Username`),
-  CONSTRAINT `FK_CustomerLogin` FOREIGN KEY (`CU_Username`) REFERENCES `login` (`LG_Username`)
+  UNIQUE KEY `CU_ID` (`CU_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

@@ -378,7 +378,7 @@ public class CustomerInputGUI extends javax.swing.JFrame {
 "jdbc:mysql://localhost:3306/RegalBank?autoReconnect=true&useSSL=false";
             String insert = "Insert into Customer (CU_Student, CU_CreditHistory, CU_FirstName,CU_MiddleName,CU_LastName,CU_DOB,CU_Number,CU_Street,"
                     + "CU_ZIP,CU_City,CU_State, CU_Email, CU_Gender, CU_Phone)"
-                    + "Values (\'" + Student_str + "\',\"" + Credit_str + "\",\"" +FName_str + "\",\""+ MName_str + "\",\""+ LName_str + "\",\'" + Date_str + "\',\"" + Num_str 
+                    + "Values (\'" + Student_str + "\',\"" + Credit_str + "\",\"" +FName_str + "\",\""+ MName_str + "\",\""+ LName_str + "\",\"" + Date_str + "\",\"" + Num_str 
                     + "\",\"" + Street_str + "\",\"" + ZIP_str + "\",\"" + City_str + "\",\"" + State_str 
                     + "\",\"" + Email_str + "\",\"" + Gender_str + "\",\"" + Phone_str + "\")";
             Connection connection = DriverManager.getConnection(connectionURL, "root", "");
