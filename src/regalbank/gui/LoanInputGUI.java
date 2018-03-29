@@ -48,7 +48,7 @@ public class LoanInputGUI extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(500, 325));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Loan Portal");
+        jLabel1.setText("Loan");
 
         jLabel2.setText("Amount Taken:");
 
