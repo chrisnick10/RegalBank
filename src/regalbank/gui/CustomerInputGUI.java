@@ -56,7 +56,6 @@ public class CustomerInputGUI extends javax.swing.JFrame {
         AddrZIP = new javax.swing.JTextField();
         AddrCity = new javax.swing.JTextField();
         AddrState = new javax.swing.JTextField();
-        AddrCountry = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -109,8 +108,6 @@ public class CustomerInputGUI extends javax.swing.JFrame {
         AddrCity.setText("CITY");
 
         AddrState.setText("MI");
-
-        AddrCountry.setText("Country");
 
         jLabel5.setText("Email");
 
@@ -263,9 +260,7 @@ public class CustomerInputGUI extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(AddrCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(AddrState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(AddrCountry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(AddrState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel9)
@@ -289,7 +284,8 @@ public class CustomerInputGUI extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(GenderFemale)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(GenderOther)))))))
+                                        .addComponent(GenderOther)))))
+                        .addGap(66, 66, 66)))
                 .addGap(16, 16, 16))
         );
         layout.setVerticalGroup(
@@ -316,8 +312,7 @@ public class CustomerInputGUI extends javax.swing.JFrame {
                     .addComponent(AddrStreet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(AddrZIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(AddrCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AddrState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AddrCountry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(AddrState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -362,7 +357,6 @@ public class CustomerInputGUI extends javax.swing.JFrame {
     private void CISubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CISubmitActionPerformed
         // Save Form to strings
         String City_str = AddrCity.getText();
-        String Country_str = AddrCountry.getText();
         String Num_str = AddrNum.getText();
         String State_str = AddrState.getText();
         String Street_str = AddrStreet.getText();
@@ -383,9 +377,9 @@ public class CustomerInputGUI extends javax.swing.JFrame {
             String connectionURL =
 "jdbc:mysql://localhost:3306/RegalBank?autoReconnect=true&useSSL=false";
             String insert = "Insert into Customer (CU_Student, CU_CreditHistory, CU_FirstName,CU_MiddleName,CU_LastName,CU_DOB,CU_Number,CU_Street,"
-                    + "CU_ZIP,CU_City,CU_State,CU_Country, CU_Email, CU_Gender, CU_Phone)"
+                    + "CU_ZIP,CU_City,CU_State, CU_Email, CU_Gender, CU_Phone)"
                     + "Values (\'" + Student_str + "\',\"" + Credit_str + "\",\"" +FName_str + "\",\""+ MName_str + "\",\""+ LName_str + "\",\'" + Date_str + "\',\"" + Num_str 
-                    + "\",\"" + Street_str + "\",\"" + ZIP_str + "\",\"" + City_str + "\",\"" + State_str + "\",\"" + Country_str 
+                    + "\",\"" + Street_str + "\",\"" + ZIP_str + "\",\"" + City_str + "\",\"" + State_str 
                     + "\",\"" + Email_str + "\",\"" + Gender_str + "\",\"" + Phone_str + "\")";
             Connection connection = DriverManager.getConnection(connectionURL, "root", "");
             Statement statement = connection.createStatement();
@@ -398,7 +392,7 @@ public class CustomerInputGUI extends javax.swing.JFrame {
 
             while (set.next()) {
                 
-                for ( int i = 1; i <=16; i++ ) {
+                for ( int i = 1; i <=15; i++ ) {
                     System.out.print(set.getString(i) + " "); 
                 }
                 System.out.println();
@@ -456,7 +450,6 @@ public class CustomerInputGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         String City_str = AddrCity.getText();
-        String Country_str = AddrCountry.getText();
         String Num_str = AddrNum.getText();
         String State_str = AddrState.getText();
         String Street_str = AddrStreet.getText();
@@ -508,6 +501,7 @@ public class CustomerInputGUI extends javax.swing.JFrame {
                 FNameField.setText(set.getString(4));
                 MNameField.setText(set.getString(5));
                 LNameField.setText(set.getString(6));
+                
                 Phone.setText(set.getString(16));
      
                 String gender_str = set.getString(15);
@@ -569,7 +563,6 @@ public class CustomerInputGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AddrCity;
-    private javax.swing.JTextField AddrCountry;
     private javax.swing.JTextField AddrNum;
     private javax.swing.JTextField AddrState;
     private javax.swing.JTextField AddrStreet;
