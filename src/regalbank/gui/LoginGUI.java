@@ -12,6 +12,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -19,11 +21,12 @@ import java.sql.*;
  */
 public class LoginGUI extends javax.swing.JFrame {
 
-    public static Connection c;
-    private CustomerInputGUI ci;
+    private static String usertype;
+    
     /** Creates new form DataBaseGUI */
     public LoginGUI() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /** This method is called from within the constructor to
@@ -41,12 +44,10 @@ public class LoginGUI extends javax.swing.JFrame {
         PasswordField = new javax.swing.JTextField();
         PasswordLabel = new javax.swing.JLabel();
         LoginButton = new javax.swing.JButton();
-        CustomerButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("RegalBank Database Access");
 
         LoginLabel.setText("Login:");
@@ -60,27 +61,6 @@ public class LoginGUI extends javax.swing.JFrame {
             }
         });
 
-        CustomerButton.setText("Customer Form");
-        CustomerButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CustomerButtonActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("Complaint");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("Card");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -88,46 +68,37 @@ public class LoginGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jButton1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(CustomerButton))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addGap(76, 76, 76))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(PasswordLabel)
-                                .addComponent(LoginLabel))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(LoginField)
-                                .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(LoginButton)))
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(PasswordLabel)
+                    .addComponent(LoginLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(LoginField, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                    .addComponent(PasswordField))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LoginButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LoginLabel)
                     .addComponent(LoginField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PasswordLabel)
-                    .addComponent(LoginButton))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CustomerButton)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                    .addComponent(PasswordLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addComponent(LoginButton)
                 .addContainerGap())
         );
 
@@ -137,32 +108,41 @@ public class LoginGUI extends javax.swing.JFrame {
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
         // TODO add your handling code here:
         
-        // If customer type
-        ci = new CustomerInputGUI();
-        ci.setVisible(true);
-        this.setVisible(false);
-        
         String username_str = LoginField.getText();
         String pass_str = PasswordField.getText();
         
-        String query = "SELECT Type FROM Login WHERE USERNAME =" + username_str + " AND password = " + pass_str;
+        String query = "SELECT LG_Type FROM Login WHERE LG_Username ='" + username_str + "' AND LG_Password = '" + pass_str+"';";
+        
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            String connectionURL = "jdbc:mysql://localhost:3306/RegalBank?autoReconnect=true&useSSL=false";
+            Connection connection = DriverManager.getConnection(connectionURL, "root", "fussball");
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery(query);
+            
+            while (result.next()) {
+                System.out.println(result.getString("LG_Type"));
+                usertype = result.getString("LG_Type");
+            }
+            
+            if (usertype.equalsIgnoreCase("admin")) {
+                AdminPortalGUI newGUI = new AdminPortalGUI();
+                this.setVisible(false);
+                newGUI.setVisible(true);
+            } else if (usertype.equalsIgnoreCase("employee")) {
+                EmployeePortalGUI newGUI = new EmployeePortalGUI();
+                this.setVisible(false);
+                newGUI.setVisible(true);
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("ClassException");
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("SQL Exception");
+        }
         
     }//GEN-LAST:event_LoginButtonActionPerformed
-
-    private void CustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CustomerButtonActionPerformed
-        // TODO Open Customer Window
-        new CustomerInputGUI().setVisible(true);
-    }//GEN-LAST:event_CustomerButtonActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        new ComplaintGUI().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        new CardGUI().setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,30 +179,14 @@ public class LoginGUI extends javax.swing.JFrame {
             }
         });
     }
-    
-    public static Connection getConnection() throws ClassNotFoundException,SQLException {
-        if ( c == null ) {
-            Class.forName("com.mysql.jdbc.Driver");
-            // Changed default password to "". 
-            c = DriverManager.getConnection("jdbc:mysql://localhost:3306/RegalBank?useSSL=false","root","");
-        }
-        return c;
-}
-    
-    public static ResultSet getData(String sql) throws Exception {
-        ResultSet rs = LoginGUI.getConnection().createStatement().executeQuery(sql);
-        return rs;
-    }
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CustomerButton;
     private javax.swing.JButton LoginButton;
     private javax.swing.JTextField LoginField;
     private javax.swing.JLabel LoginLabel;
     private javax.swing.JTextField PasswordField;
     private javax.swing.JLabel PasswordLabel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 
