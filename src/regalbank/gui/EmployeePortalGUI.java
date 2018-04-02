@@ -33,7 +33,7 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
         complaintButton = new javax.swing.JButton();
         cardButton = new javax.swing.JButton();
         CustomerButton = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        loanButton = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -65,7 +65,12 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Loan Input");
+        loanButton.setText("Loan Input");
+        loanButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loanButtonActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Logout");
 
@@ -82,7 +87,7 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
                             .addComponent(complaintButton)
                             .addComponent(cardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(CustomerButton)
-                            .addComponent(jButton3))
+                            .addComponent(loanButton))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -101,7 +106,7 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(CustomerButton)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(loanButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(jButton4)
                 .addContainerGap())
@@ -124,6 +129,11 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
         // TODO Open Customer Window
         new CustomerInputGUI().setVisible(true);
     }//GEN-LAST:event_CustomerButtonActionPerformed
+
+    private void loanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loanButtonActionPerformed
+        // TODO add your handling code here:
+        new LoanInputGUI().setVisible(true);
+    }//GEN-LAST:event_loanButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -164,9 +174,9 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
     private javax.swing.JButton CustomerButton;
     private javax.swing.JButton cardButton;
     private javax.swing.JButton complaintButton;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton loanButton;
     // End of variables declaration//GEN-END:variables
 }

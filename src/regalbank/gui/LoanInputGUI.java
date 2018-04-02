@@ -5,6 +5,13 @@
  */
 package regalbank.gui;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author cjwn
@@ -16,6 +23,7 @@ public class LoanInputGUI extends javax.swing.JFrame {
      */
     public LoanInputGUI() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -43,10 +51,10 @@ public class LoanInputGUI extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         customerTextField = new javax.swing.JTextField();
         submitButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        loadButton = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        deleteButton = new javax.swing.JButton();
+        updateButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(500, 325));
@@ -73,11 +81,6 @@ public class LoanInputGUI extends javax.swing.JFrame {
         jLabel6.setText("Loan Status:");
 
         loanStatusComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Accepted", "Rejected" }));
-        loanStatusComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loanStatusComboBoxActionPerformed(evt);
-            }
-        });
 
         jLabel7.setText("Loan Source:");
 
@@ -93,11 +96,16 @@ public class LoanInputGUI extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Load ID:");
+        loadButton.setText("Load ID:");
+        loadButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loadButtonActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Delete");
+        deleteButton.setText("Delete");
 
-        jButton3.setText("Update");
+        updateButton.setText("Update");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -142,13 +150,13 @@ public class LoanInputGUI extends javax.swing.JFrame {
                                     .addComponent(amountRepaidTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(48, 48, 48))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(loadButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3)
+                        .addComponent(updateButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
+                        .addComponent(deleteButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(submitButton)))
                 .addContainerGap())
@@ -185,25 +193,51 @@ public class LoanInputGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(submitButton)
-                    .addComponent(jButton1)
+                    .addComponent(loadButton)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(deleteButton)
+                    .addComponent(updateButton))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void loanStatusComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loanStatusComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_loanStatusComboBoxActionPerformed
-
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         // TODO add your handling code here:
         
+        //create input query string
+        String amountTaken = amountTakenTextField.getText();
+        String amountRepaid = amountRepaidTextField.getText();
+        String interestRate = interestRateTextField.getText();
+        String loanType = loanTypeTextField.getText();
+        String loanStatus = loanStatusComboBox.getSelectedItem().toString();
+        String loanSource = loanSourceTextField.getText();
+        String customer = customerTextField.getText();
         
+        String insertQuery = "insert into loan (LA_AmountTaken,LA_AmountRepaid,LA_InterestRate,"+
+                "LA_Type,LA_Status,LA_Source,LA_Customer) values "+
+                "('"+amountTaken+"','"+amountRepaid+"','"+ interestRate+"','"+loanType+"','"+loanStatus+"','"+loanSource+"','"+customer+"');";
+        
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            String connectionURL = "jdbc:mysql://localhost:3306/RegalBank?autoReconnect=true&useSSL=false";
+            Connection connection = DriverManager.getConnection(connectionURL, "root", "fussball");
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(insertQuery);
+            this.dispose();
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(LoanInputGUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(LoanInputGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
     }//GEN-LAST:event_submitButtonActionPerformed
+
+    private void loadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_loadButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -244,10 +278,8 @@ public class LoanInputGUI extends javax.swing.JFrame {
     private javax.swing.JTextField amountRepaidTextField;
     private javax.swing.JTextField amountTakenTextField;
     private javax.swing.JTextField customerTextField;
+    private javax.swing.JButton deleteButton;
     private javax.swing.JTextField interestRateTextField;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -257,9 +289,11 @@ public class LoanInputGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton loadButton;
     private javax.swing.JTextField loanSourceTextField;
     private javax.swing.JComboBox<String> loanStatusComboBox;
     private javax.swing.JTextField loanTypeTextField;
     private javax.swing.JButton submitButton;
+    private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 }
