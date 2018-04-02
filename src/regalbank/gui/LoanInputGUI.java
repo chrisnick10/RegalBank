@@ -57,7 +57,7 @@ public class LoanInputGUI extends javax.swing.JFrame {
         deleteButton = new javax.swing.JButton();
         updateButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(500, 325));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
