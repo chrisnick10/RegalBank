@@ -65,7 +65,7 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
             }
         });
 
-        loanButton.setText("Loan Input");
+        loanButton.setText("Loan");
         loanButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loanButtonActionPerformed(evt);

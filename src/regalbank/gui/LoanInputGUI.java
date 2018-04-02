@@ -25,6 +25,8 @@ public class LoanInputGUI extends javax.swing.JFrame {
     public LoanInputGUI() {
         initComponents();
         this.setLocationRelativeTo(null);
+        updateButton.setEnabled(false);
+        deleteButton.setEnabled(false);
     }
 
     /**
@@ -105,6 +107,11 @@ public class LoanInputGUI extends javax.swing.JFrame {
         });
 
         deleteButton.setText("Delete");
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
 
         updateButton.setText("Update");
         updateButton.addActionListener(new java.awt.event.ActionListener() {
@@ -223,7 +230,8 @@ public class LoanInputGUI extends javax.swing.JFrame {
         
         String insertQuery = "insert into loan (LA_AmountTaken,LA_AmountRepaid,LA_InterestRate,"+
                 "LA_Type,LA_Status,LA_Source,LA_Customer) values "+
-                "('"+amountTaken+"','"+amountRepaid+"','"+ interestRate+"','"+loanType+"','"+loanStatus+"','"+loanSource+"','"+customer+"');";
+                "('"+amountTaken+"','"+amountRepaid+"','"+ interestRate+"','"+loanType+"','"+
+                loanStatus+"','"+loanSource+"','"+customer+"');";
         
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -244,8 +252,12 @@ public class LoanInputGUI extends javax.swing.JFrame {
     private void loadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadButtonActionPerformed
         // TODO add your handling code here:
         
-        //diable submit button
+        //diable submit button, enable delete/update
         submitButton.setEnabled(false);
+        updateButton.setEnabled(true);
+        deleteButton.setEnabled(true);
+        
+        //get the loanID to load
         String loanID = loanIDTextField.getText();
         
         String query = "select * from loan where LA_LoanID ="+loanID+";";
@@ -304,7 +316,7 @@ public class LoanInputGUI extends javax.swing.JFrame {
             Connection connection = DriverManager.getConnection(connectionURL, "root", "fussball");
             Statement statement = connection.createStatement();
             statement.executeUpdate(updateQuery);
-            //this.dispose();
+            
             
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(LoanInputGUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -312,6 +324,12 @@ public class LoanInputGUI extends javax.swing.JFrame {
             Logger.getLogger(LoanInputGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_updateButtonActionPerformed
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        // TODO add your handling code here:
+        
+        String deleteQuery = "";
+    }//GEN-LAST:event_deleteButtonActionPerformed
 
     /**
      * @param args the command line arguments

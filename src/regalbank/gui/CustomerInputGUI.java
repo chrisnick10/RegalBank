@@ -77,7 +77,7 @@ public class CustomerInputGUI extends javax.swing.JFrame {
         LoadIDButton = new javax.swing.JButton();
         IDField = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Enter Customer Information");
 

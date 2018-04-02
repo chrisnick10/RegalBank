@@ -106,7 +106,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="loanButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Loan Input"/>
+        <Property name="text" type="java.lang.String" value="Loan"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="loanButtonActionPerformed"/>
