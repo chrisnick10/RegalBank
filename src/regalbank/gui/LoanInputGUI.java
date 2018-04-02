@@ -236,7 +236,7 @@ public class LoanInputGUI extends javax.swing.JFrame {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             String connectionURL = "jdbc:mysql://localhost:3306/RegalBank?autoReconnect=true&useSSL=false";
-            Connection connection = DriverManager.getConnection(connectionURL, "root", "fussball");
+            Connection connection = DriverManager.getConnection(connectionURL, "root", "");
             Statement statement = connection.createStatement();
             statement.executeUpdate(insertQuery);
             this.dispose();
@@ -265,7 +265,7 @@ public class LoanInputGUI extends javax.swing.JFrame {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             String connectionURL = "jdbc:mysql://localhost:3306/RegalBank?autoReconnect=true&useSSL=false";
-            Connection connection = DriverManager.getConnection(connectionURL, "root", "fussball");
+            Connection connection = DriverManager.getConnection(connectionURL, "root", "");
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery(query);
             
@@ -313,7 +313,7 @@ public class LoanInputGUI extends javax.swing.JFrame {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             String connectionURL = "jdbc:mysql://localhost:3306/RegalBank?autoReconnect=true&useSSL=false";
-            Connection connection = DriverManager.getConnection(connectionURL, "root", "fussball");
+            Connection connection = DriverManager.getConnection(connectionURL, "root", "");
             Statement statement = connection.createStatement();
             statement.executeUpdate(updateQuery);
             
@@ -328,7 +328,23 @@ public class LoanInputGUI extends javax.swing.JFrame {
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         // TODO add your handling code here:
         
-        String deleteQuery = "";
+        // get loanID
+        String loanID = loanIDTextField.getText();
+        String deleteQuery = "DELETE FROM LOAN WHERE LA_LoanID="+loanID+";";
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            String connectionURL = "jdbc:mysql://localhost:3306/RegalBank?autoReconnect=true&useSSL=false";
+            Connection connection = DriverManager.getConnection(connectionURL, "root", "");
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(deleteQuery);
+            
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(LoanInputGUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(LoanInputGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     /**

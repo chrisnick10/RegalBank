@@ -116,7 +116,7 @@ public class LoginGUI extends javax.swing.JFrame {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             String connectionURL = "jdbc:mysql://localhost:3306/RegalBank?autoReconnect=true&useSSL=false";
-            Connection connection = DriverManager.getConnection(connectionURL, "root", "fussball");
+            Connection connection = DriverManager.getConnection(connectionURL, "root", "");
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery(query);
             

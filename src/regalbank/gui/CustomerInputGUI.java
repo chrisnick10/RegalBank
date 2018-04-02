@@ -398,7 +398,7 @@ public class CustomerInputGUI extends javax.swing.JFrame {
                     + "Values (\'" + Student_str + "\',\"" + Credit_str + "\",\"" +FName_str + "\",\""+ MName_str + "\",\""+ LName_str + "\",\"" + Date_str + "\",\"" + Num_str 
                     + "\",\"" + Street_str + "\",\"" + ZIP_str + "\",\"" + City_str + "\",\"" + State_str 
                     + "\",\"" + Email_str + "\",\"" + Gender_str + "\",\"" + Phone_str + "\")";
-            Connection connection = DriverManager.getConnection(connectionURL, "root", "fussball");
+            Connection connection = DriverManager.getConnection(connectionURL, "root", "");
             Statement statement = connection.createStatement();
             statement.executeUpdate(insert);
             
