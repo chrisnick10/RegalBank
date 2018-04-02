@@ -7,6 +7,7 @@ package regalbank.gui;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
@@ -52,7 +53,7 @@ public class LoanInputGUI extends javax.swing.JFrame {
         customerTextField = new javax.swing.JTextField();
         submitButton = new javax.swing.JButton();
         loadButton = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        loanIDTextField = new javax.swing.JTextField();
         deleteButton = new javax.swing.JButton();
         updateButton = new javax.swing.JButton();
 
@@ -152,7 +153,7 @@ public class LoanInputGUI extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(loadButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(loanIDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(updateButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -194,7 +195,7 @@ public class LoanInputGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(submitButton)
                     .addComponent(loadButton)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(loanIDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(deleteButton)
                     .addComponent(updateButton))
                 .addContainerGap())
@@ -237,6 +238,32 @@ public class LoanInputGUI extends javax.swing.JFrame {
 
     private void loadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadButtonActionPerformed
         // TODO add your handling code here:
+        String loanID = loanIDTextField.getText();
+        
+        String query = "select * from loan where LA_LoanID ="+loanID+";";
+        
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            String connectionURL = "jdbc:mysql://localhost:3306/RegalBank?autoReconnect=true&useSSL=false";
+            Connection connection = DriverManager.getConnection(connectionURL, "root", "fussball");
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery(query);
+            
+            while (result.next()) {
+                amountTakenTextField.setText(result.getString("LA_AmountTaken"));
+                amountRepaidTextField.setText(result.getString("LA_AmountRepaid"));
+                interestRateTextField.setText(result.getString("LA_InterestRate"));
+                loanTypeTextField.setText(result.getString("LA_Type"));
+                loanStatusComboBox.setSelectedItem(result.getString("LA_Status"));
+                loanSourceTextField.setText(result.getString("LA_Source"));
+                customerTextField.setText(result.getString("LA_Customer"));
+            }
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(LoanInputGUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(LoanInputGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_loadButtonActionPerformed
 
     /**
@@ -288,8 +315,8 @@ public class LoanInputGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton loadButton;
+    private javax.swing.JTextField loanIDTextField;
     private javax.swing.JTextField loanSourceTextField;
     private javax.swing.JComboBox<String> loanStatusComboBox;
     private javax.swing.JTextField loanTypeTextField;
