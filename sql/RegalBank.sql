@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `accountinfo`;
 CREATE TABLE `accountinfo` (
   `A_AccountID` int(11) NOT NULL AUTO_INCREMENT,
   `A_Balance` double NOT NULL,
-  `A_Interest` decimal(2,2) DEFAULT NULL,
+  `A_Interest` float(4,2) DEFAULT NULL,
   `A_Overdraft` double DEFAULT NULL,
   `A_LastAccess` datetime DEFAULT NULL,
   `A_AccountType` enum('checking','savings','interest','mma','cod','ira') NOT NULL,
@@ -114,12 +114,11 @@ CREATE TABLE `card` (
   `CR_Type` enum('Alpha','Bravo','Charlie','Delta','Echo','Foxtrot') NOT NULL,
   `CR_Assigned` date NOT NULL,
   `CR_Expiration` date NOT NULL,
-  `CR_APR` decimal(4,4) DEFAULT NULL,
-  `CR_RewardRate` decimal(2,2) DEFAULT NULL,
+  `CR_APR` float(4,4) DEFAULT NULL,
+  `CR_RewardRate` float(4,2) DEFAULT NULL,
   `CR_RewardBonus` double DEFAULT NULL,
   `CR_LateFee` double DEFAULT NULL,
   `CR_AnnualFee` double DEFAULT NULL,
-  `CR_Max` double DEFAULT NULL,
   `CR_AccountID` int(11) NOT NULL,
   PRIMARY KEY (`CR_Number`),
   UNIQUE KEY `CR_Number` (`CR_Number`),
@@ -181,7 +180,7 @@ CREATE TABLE `login` (
   `LG_Question` varchar(100) NOT NULL,
   `LG_Answer` varchar(100) NOT NULL,
   `LG_ProfilePic` longblob,
-  `LG_Type` enum('customer','employee','admin') NOT NULL,
+  `LG_Type` enum('employee','admin') NOT NULL,
   UNIQUE KEY `LG_Username` (`LG_Username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -287,7 +286,7 @@ CREATE TABLE `interest` (
   `I_Date` date NOT NULL,
   `I_OldBalance` double NOT NULL,
   `I_NewBalance` double NOT NULL,
-  `I_Rate` decimal(2,2) NOT NULL,
+  `I_Rate` float(4,2) NOT NULL,
   `I_AccountID` int(11) NOT NULL,
   PRIMARY KEY (`I_Date`,`I_AccountID`),
   KEY `FK_InterestAccount` (`I_AccountID`),

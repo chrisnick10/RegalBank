@@ -99,11 +99,11 @@ public class CustomerInputGUI extends javax.swing.JFrame {
 
         jLabel4.setText("Address");
 
-        AddrNum.setText("Number");
+        AddrNum.setText("600");
 
         AddrStreet.setText("Street");
 
-        AddrZIP.setText("ZIPCODE");
+        AddrZIP.setText("48309");
 
         AddrCity.setText("CITY");
 
@@ -195,8 +195,18 @@ public class CustomerInputGUI extends javax.swing.JFrame {
         });
 
         UpdateButton.setText("Update");
+        UpdateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateButtonActionPerformed(evt);
+            }
+        });
 
-        DeleteButton.setText("Delete");
+        DeleteButton.setText("DeleteID");
+        DeleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteButtonActionPerformed(evt);
+            }
+        });
 
         LoadIDButton.setText("LoadID:");
         LoadIDButton.addActionListener(new java.awt.event.ActionListener() {
@@ -217,7 +227,7 @@ public class CustomerInputGUI extends javax.swing.JFrame {
                         .addComponent(LoadIDButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(IDField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(85, 85, 85)
@@ -228,9 +238,6 @@ public class CustomerInputGUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel5)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
@@ -244,48 +251,58 @@ public class CustomerInputGUI extends javax.swing.JFrame {
                                         .addComponent(MNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(LNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(DOBDay, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(DOBMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(DOBYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(Phone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(AddrNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(AddrNum)
+                                            .addComponent(DOBDay, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(AddrStreet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(AddrZIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(AddrCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(AddrState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(AddrStreet)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(AddrZIP, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(AddrCity, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(AddrState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(10, 10, 10))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(DOBMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(DOBYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel6))
-                                .addGap(44, 44, 44)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel7)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(BadButton)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(GoodButton)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(ExButton))
+                                        .addComponent(jLabel5)
+                                        .addGap(64, 64, 64)
+                                        .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(StudentYes)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(StudentNo))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(GenderMale)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(GenderFemale)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(GenderOther)))))
-                        .addGap(66, 66, 66)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel9)
+                                            .addComponent(jLabel8)
+                                            .addComponent(jLabel6))
+                                        .addGap(44, 44, 44)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(BadButton)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(GoodButton)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(ExButton))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(StudentYes)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(StudentNo))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(GenderMale)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(GenderFemale)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(GenderOther)))))
+                                .addGap(66, 66, 66)))))
                 .addGap(16, 16, 16))
         );
         layout.setVerticalGroup(
@@ -501,10 +518,19 @@ public class CustomerInputGUI extends javax.swing.JFrame {
                 FNameField.setText(set.getString(4));
                 MNameField.setText(set.getString(5));
                 LNameField.setText(set.getString(6));
+                String[] Date = set.getString(7).split("-");
+                DOBYear.setText( (String) Date[0]);
+                DOBMonth.setText( (String) Date[1]);
+                DOBDay.setText( (String) Date[2]);
                 
-                Phone.setText(set.getString(16));
+                AddrNum.setText(set.getString(8));
+                AddrStreet.setText(set.getString(9));
+                AddrZIP.setText(set.getString(10));
+                AddrCity.setText(set.getString(11));
+                AddrState.setText(set.getString(12));
+                Email.setText(set.getString(13));
      
-                String gender_str = set.getString(15);
+                String gender_str = set.getString(14);
                 switch(gender_str) {
                     case "male" :   GenderMale.doClick();
                                     break;
@@ -514,6 +540,7 @@ public class CustomerInputGUI extends javax.swing.JFrame {
                                     break;
                     default : 
                 }
+                Phone.setText(set.getString(15));
                 
              }
            connection.close();
@@ -524,6 +551,91 @@ public class CustomerInputGUI extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_LoadIDButtonActionPerformed
+
+    private void UpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateButtonActionPerformed
+        // TODO add your handling code here:
+        String City_str = AddrCity.getText();
+        String Num_str = AddrNum.getText();
+        String State_str = AddrState.getText();
+        String Street_str = AddrStreet.getText();
+        String ZIP_str = AddrZIP.getText();
+        String Day_str = DOBDay.getText();
+        String Month_str = DOBMonth.getText();
+        String Year_str = DOBYear.getText();
+        String FName_str = FNameField.getText();
+        String MName_str = MNameField.getText();
+        String LName_str = LNameField.getText();
+        String Phone_str = Phone.getText();
+        String Email_str = Email.getText();
+        String ID_str = IDField.getText();
+        
+        String Date_str = Year_str + "-" + Month_str + "-" + Day_str;
+        //TODO : Update
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            String connectionURL =
+"jdbc:mysql://localhost:3306/RegalBank?autoReconnect=true&useSSL=false";
+            String update = "UPDATE CUSTOMER +"
+                    + "SET CU_FNAME = \"" + FName_str + "\""
+                    + "WHERE CU_ID = " + Integer.parseInt(ID_str);
+            Connection connection = DriverManager.getConnection(connectionURL, "root", "");
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(update);
+            
+            String q5 = "select * from Customer";
+            ResultSet set = statement.executeQuery(q5);
+            
+            System.out.println("Executed Query");
+
+            while (set.next()) {
+                
+                for ( int i = 1; i <=15; i++ ) {
+                    System.out.print(set.getString(i) + " "); 
+                }
+                System.out.println();
+             }
+            connection.close();
+        } catch ( ClassNotFoundException e) {
+            System.out.println("ClassException");
+        } catch ( SQLException e) {
+            System.out.println("SQLEXCEPTION");
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_UpdateButtonActionPerformed
+
+    private void DeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteButtonActionPerformed
+        // TODO add your handling code here:
+        String ID_str = IDField.getText();
+        
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            String connectionURL =
+"jdbc:mysql://localhost:3306/RegalBank?autoReconnect=true&useSSL=false";
+            String delete = "DELETE FROM CUSTOMER WHERE CU_ID = " + Integer.parseInt(ID_str);
+            Connection connection = DriverManager.getConnection(connectionURL, "root", "");
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(delete);
+            
+            String q5 = "select * from Customer";
+            ResultSet set = statement.executeQuery(q5);
+            
+            System.out.println("Executed Query");
+
+            while (set.next()) {
+                
+                for ( int i = 1; i <=15; i++ ) {
+                    System.out.print(set.getString(i) + " "); 
+                }
+                System.out.println();
+             }
+            connection.close();
+        } catch ( ClassNotFoundException e) {
+            System.out.println("ClassException");
+        } catch ( SQLException e) {
+            System.out.println("SQLEXCEPTION");
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_DeleteButtonActionPerformed
 
     /**
      * @param args the command line arguments
