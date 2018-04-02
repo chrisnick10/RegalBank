@@ -107,6 +107,11 @@ public class LoanInputGUI extends javax.swing.JFrame {
         deleteButton.setText("Delete");
 
         updateButton.setText("Update");
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -238,6 +243,9 @@ public class LoanInputGUI extends javax.swing.JFrame {
 
     private void loadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadButtonActionPerformed
         // TODO add your handling code here:
+        
+        //diable submit button
+        submitButton.setEnabled(false);
         String loanID = loanIDTextField.getText();
         
         String query = "select * from loan where LA_LoanID ="+loanID+";";
@@ -265,6 +273,39 @@ public class LoanInputGUI extends javax.swing.JFrame {
             Logger.getLogger(LoanInputGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_loadButtonActionPerformed
+
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        // TODO add your handling code here:
+        
+        //get loanID
+        
+        //create input query string
+        String amountTaken = amountTakenTextField.getText();
+        String amountRepaid = amountRepaidTextField.getText();
+        String interestRate = interestRateTextField.getText();
+        String loanType = loanTypeTextField.getText();
+        String loanStatus = loanStatusComboBox.getSelectedItem().toString();
+        String loanSource = loanSourceTextField.getText();
+        String customer = customerTextField.getText();
+        
+        String updateQuery = "insert into loan (LA_AmountTaken,LA_AmountRepaid,LA_InterestRate,"+
+                "LA_Type,LA_Status,LA_Source,LA_Customer) values "+
+                "('"+amountTaken+"','"+amountRepaid+"','"+ interestRate+"','"+loanType+"','"+loanStatus+"','"+loanSource+"','"+customer+"');";
+        
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            String connectionURL = "jdbc:mysql://localhost:3306/RegalBank?autoReconnect=true&useSSL=false";
+            Connection connection = DriverManager.getConnection(connectionURL, "root", "fussball");
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(updateQuery);
+            this.dispose();
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(LoanInputGUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(LoanInputGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_updateButtonActionPerformed
 
     /**
      * @param args the command line arguments
