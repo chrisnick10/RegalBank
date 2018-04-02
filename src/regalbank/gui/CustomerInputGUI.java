@@ -10,12 +10,12 @@ import java.sql.*;
  *
  * @author reedtdan
  */
-public class CustomerInput extends javax.swing.JFrame {
+public class CustomerInputGUI extends javax.swing.JFrame {
 
     /**
      * Creates new form CustomerInput
      */
-    public CustomerInput() {
+    public CustomerInputGUI() {
         initComponents();
     }
 
@@ -60,11 +60,6 @@ public class CustomerInput extends javax.swing.JFrame {
         jLabel1.setText("Enter Customer Information");
 
         FNameField.setText("First");
-        FNameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FNameFieldActionPerformed(evt);
-            }
-        });
 
         jLabel2.setText("Name");
 
@@ -75,11 +70,6 @@ public class CustomerInput extends javax.swing.JFrame {
         jLabel3.setText("DateOfBirth");
 
         DOBDay.setText("Day");
-        DOBDay.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DOBDayActionPerformed(evt);
-            }
-        });
 
         DOBMonth.setText("Month");
 
@@ -88,11 +78,6 @@ public class CustomerInput extends javax.swing.JFrame {
         jLabel4.setText("Address");
 
         AddrNum.setText("Number");
-        AddrNum.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddrNumActionPerformed(evt);
-            }
-        });
 
         AddrStreet.setText("Street");
 
@@ -111,11 +96,6 @@ public class CustomerInput extends javax.swing.JFrame {
         jLabel7.setText("Phone");
 
         jTextField1.setText("Phone Number");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
 
         jTextField2.setText("FullEmail");
 
@@ -254,22 +234,6 @@ public class CustomerInput extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void FNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FNameFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_FNameFieldActionPerformed
-
-    private void DOBDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DOBDayActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DOBDayActionPerformed
-
-    private void AddrNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddrNumActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AddrNumActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
     private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton4ActionPerformed
@@ -315,20 +279,21 @@ public class CustomerInput extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CustomerInput.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CustomerInputGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CustomerInput.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CustomerInputGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CustomerInput.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CustomerInputGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CustomerInput.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CustomerInputGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CustomerInput().setVisible(true);
+                new CustomerInputGUI().setVisible(true);
             }
         });
     }

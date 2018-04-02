@@ -170,9 +170,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="First"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FNameFieldActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
@@ -198,9 +195,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Day"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DOBDayActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="DOBMonth">
       <Properties>
@@ -221,9 +215,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Number"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddrNumActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="AddrStreet">
       <Properties>
@@ -269,9 +260,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Phone Number"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField2">
       <Properties>
