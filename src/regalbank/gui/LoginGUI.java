@@ -22,6 +22,7 @@ import java.util.logging.Logger;
 public class LoginGUI extends javax.swing.JFrame {
 
     private static String usertype;
+    public static Connection c;
     
     /** Creates new form DataBaseGUI */
     public LoginGUI() {
@@ -144,6 +145,15 @@ public class LoginGUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_LoginButtonActionPerformed
 
+    public static Connection getConnection() throws ClassNotFoundException,SQLException {
+        if ( c == null ) {
+            Class.forName("com.mysql.jdbc.Driver");
+            // Changed default password to "". 
+            c = DriverManager.getConnection("jdbc:mysql://localhost:3306/regalbank?useSSL=false","root","radar312");
+        }
+        return c;
+}
+    
     /**
      * @param args the command line arguments
      */
