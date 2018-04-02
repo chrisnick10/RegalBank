@@ -278,6 +278,7 @@ public class LoanInputGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         //get loanID
+        String loanID = loanIDTextField.getText();
         
         //create input query string
         String amountTaken = amountTakenTextField.getText();
@@ -288,17 +289,22 @@ public class LoanInputGUI extends javax.swing.JFrame {
         String loanSource = loanSourceTextField.getText();
         String customer = customerTextField.getText();
         
-        String updateQuery = "insert into loan (LA_AmountTaken,LA_AmountRepaid,LA_InterestRate,"+
-                "LA_Type,LA_Status,LA_Source,LA_Customer) values "+
-                "('"+amountTaken+"','"+amountRepaid+"','"+ interestRate+"','"+loanType+"','"+loanStatus+"','"+loanSource+"','"+customer+"');";
-        
+        String updateQuery = "UPDATE loan "+
+                "SET LA_AmountTaken='"+amountTaken+"', "+
+                "LA_AmountRepaid='"+amountRepaid+"', "+
+                "LA_InterestRate='"+interestRate+"', "+
+                "LA_Type='"+loanType+"', "+
+                "LA_Status='"+loanStatus+"', "+
+                "LA_Source='"+loanSource+"', "+
+                "LA_Customer='"+customer+"' "+
+                "WHERE LA_LoanID ="+loanID+";";
         try {
             Class.forName("com.mysql.jdbc.Driver");
             String connectionURL = "jdbc:mysql://localhost:3306/RegalBank?autoReconnect=true&useSSL=false";
             Connection connection = DriverManager.getConnection(connectionURL, "root", "fussball");
             Statement statement = connection.createStatement();
             statement.executeUpdate(updateQuery);
-            this.dispose();
+            //this.dispose();
             
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(LoanInputGUI.class.getName()).log(Level.SEVERE, null, ex);
