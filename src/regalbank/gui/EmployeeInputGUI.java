@@ -373,7 +373,9 @@ public class EmployeeInputGUI extends javax.swing.JFrame {
         
         //insert statement
         String insertEmp = "INSERT INTO Employee (E_FName, E_MName, E_LName, E_Street, E_ZIP, E_City, E_State, E_Phone, E_Title, E_Salary, E_BranchID, E_DOB, E_DateOfJoin, E_Username, E_Number) VALUES (\'"
-                        +fName_str+"\',\'"+mName_str+"\',\'"+lName_str+"\',\'"+adStreet_str+"\',\'"+adZIP_str+"\',\'"+adCity_str+"\',\'"+adState_str+"\',\'"+phone_str+"\',\'"+title_str+"\',"+salary_dbl+","+branchID_int+",\'"+dob+"\',\'"+doj+"\',\'"+username_str+"\',\'"+adNum_str+"\');";
+                        +fName_str+"\',\'"+mName_str+"\',\'"+lName_str+"\',\'"+adStreet_str+"\',\'"+adZIP_str+"\',\'"+adCity_str+"\',\'"+adState_str+"\',\'"+phone_str+"\',\'"+title_str+"\',"+salary_dbl+","+branchID_int+",\'"+dob+"\',\'"+doj+"\',\'"+username_str+"\',\'"+adNum_str+"\');"
+                + "INSERT INTO Login (LG_Username, LG_Password) values (\'"+username_str+"\',\'"+password_str+"\');";
+        
         
         //enter into DB
         try{

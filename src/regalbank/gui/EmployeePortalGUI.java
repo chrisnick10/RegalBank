@@ -35,6 +35,7 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
         CustomerButton = new javax.swing.JButton();
         loanButton = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        accountButton = new javax.swing.JButton();
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Admin Portal");
@@ -74,6 +75,8 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
 
         jButton4.setText("Logout");
 
+        accountButton.setText("Account");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -82,16 +85,19 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(complaintButton)
-                            .addComponent(cardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CustomerButton)
-                            .addComponent(loanButton))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton4)))
+                        .addComponent(jButton4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(loanButton)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(complaintButton)
+                                .addGap(53, 53, 53)
+                                .addComponent(accountButton))
+                            .addComponent(cardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CustomerButton))
+                        .addGap(0, 169, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -100,7 +106,9 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(complaintButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(complaintButton)
+                    .addComponent(accountButton))
                 .addGap(18, 18, 18)
                 .addComponent(cardButton)
                 .addGap(18, 18, 18)
@@ -172,6 +180,7 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CustomerButton;
+    private javax.swing.JButton accountButton;
     private javax.swing.JButton cardButton;
     private javax.swing.JButton complaintButton;
     private javax.swing.JButton jButton4;
