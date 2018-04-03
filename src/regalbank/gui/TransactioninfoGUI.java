@@ -5,9 +5,14 @@
  */
 package regalbank.gui;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 /**
  *
- * @author kukum
+ * @author lalingeman
  */
 public class TransactioninfoGUI extends javax.swing.JFrame {
 
@@ -42,12 +47,12 @@ public class TransactioninfoGUI extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         transTypeBox = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
-        transRemarksBox = new javax.swing.JTextField();
+        transRemarksField = new javax.swing.JTextField();
         transCreateButton = new javax.swing.JButton();
         transUpdateButton = new javax.swing.JButton();
         transDeleteButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Enter Transaction Information");
 
@@ -56,6 +61,11 @@ public class TransactioninfoGUI extends javax.swing.JFrame {
         transIDField.setText("ID(update/delete)");
 
         transFetchButton.setText("Fetch");
+        transFetchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transFetchButtonActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Account ID");
 
@@ -79,69 +89,83 @@ public class TransactioninfoGUI extends javax.swing.JFrame {
 
         jLabel8.setText("Remarks");
 
-        transRemarksBox.setText("Remarks");
+        transRemarksField.setText("Remarks");
 
         transCreateButton.setText("Create");
+        transCreateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transCreateButtonActionPerformed(evt);
+            }
+        });
 
         transUpdateButton.setText("Update");
+        transUpdateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transUpdateButtonActionPerformed(evt);
+            }
+        });
 
         transDeleteButton.setText("Delete");
+        transDeleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transDeleteButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel1)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(transAccountIDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel4))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(transIDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(transFetchButton)))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(transModeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel5)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(transBalanceField, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel7)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(transTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(35, 35, 35)
+                                    .addComponent(jLabel6)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(transDateField))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(28, 28, 28)
+                                    .addComponent(jLabel8)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(transRemarksField, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(transAccountIDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel4))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(transIDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(transFetchButton)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(transModeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(transBalanceField, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(transTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(35, 35, 35)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(transDateField))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel8)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(transRemarksBox, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
+                        .addGap(118, 118, 118)
                         .addComponent(transCreateButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(transUpdateButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(transDeleteButton)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,11 +191,11 @@ public class TransactioninfoGUI extends javax.swing.JFrame {
                     .addComponent(transDateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(transTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(transRemarksField)
                     .addComponent(jLabel8)
-                    .addComponent(transRemarksBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                    .addComponent(jLabel7)
+                    .addComponent(transTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(115, 115, 115)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(transCreateButton)
                     .addComponent(transUpdateButton)
@@ -181,6 +205,93 @@ public class TransactioninfoGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void transCreateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transCreateButtonActionPerformed
+        String transAccountID_str = transAccountIDField.getText();
+        String transMode_str = transModeBox.getSelectedItem().toString();
+        String transBalance_str = transBalanceField.getText();
+        String transDate_str = transDateField.getText();
+        String transType_str = transTypeBox.getSelectedItem().toString();
+        String transRemarks_str = transRemarksField.getText();
+        
+        String insertTrans = "INSERT into Transactioninfo (T_AccountID, T_Mode, T_Balance, T_Date, T_Type, T_Remarks) values (\'"
+                +transAccountID_str+"\',\'"+transMode_str+"\',\'"+transBalance_str+"\',\'"+transDate_str+"\',\'"+transType_str+"\',\'"+transRemarks_str+"\');";
+        
+        try{
+            Statement stmt = LoginGUI.getConnection().createStatement();
+            stmt.executeUpdate(insertTrans);
+        } 
+        catch (ClassNotFoundException e) {
+            System.out.println("Class not found");
+        }
+        catch (SQLException s) {
+            System.out.println("SQL exception " + s.getMessage());
+        }
+    }//GEN-LAST:event_transCreateButtonActionPerformed
+
+    private void transFetchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transFetchButtonActionPerformed
+        String transID_str = transIDField.getText();
+        
+            try {
+            PreparedStatement stmt = LoginGUI.getConnection().prepareStatement("SELECT * from Transactioninfo WHERE T_TransactionID = ?");
+            stmt.setString(1, transID_str);
+            ResultSet rslt = stmt.executeQuery();
+            while (rslt.next()) {
+                transAccountIDField.setText(rslt.getString("T_AccountID"));
+                transModeBox.setSelectedItem(rslt.getString("T_Mode"));
+                transBalanceField.setText(rslt.getString("T_Balance"));
+                transDateField.setText(rslt.getString("T_Date"));
+                transTypeBox.setSelectedItem(rslt.getString("T_Type"));
+                transRemarksField.setText(rslt.getString("T_Remarks"));
+            }
+        }
+        catch (ClassNotFoundException e) {
+            System.out.println("Class not found");
+        }
+        catch (SQLException s) {
+            System.out.println("SQL exception " + s.getMessage());
+        }
+    }//GEN-LAST:event_transFetchButtonActionPerformed
+
+    private void transUpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transUpdateButtonActionPerformed
+        String transAccountID_str = transAccountIDField.getText();
+        String transMode_str = transModeBox.getSelectedItem().toString();
+        String transBalance_str = transBalanceField.getText();
+        String transDate_str = transDateField.getText();
+        String transType_str = transTypeBox.getSelectedItem().toString();
+        String transRemarks_str = transRemarksField.getText();
+        String transID_str = transIDField.getText();
+        
+        String updateTrans = "UPDATE Transactioninfo SET T_AccountID=\'"+transAccountID_str+"\',T_Mode=\'"+transMode_str+"\',T_Balance=\'"+transBalance_str+"\',T_Date=\'"+transDate_str+"\',T_Type=\'"+transType_str+"\',T_Remarks=\'"+transRemarks_str+"\' where T_TransactionID = ?;";
+        
+        try {
+            PreparedStatement stmt = LoginGUI.getConnection().prepareStatement(updateTrans);
+            stmt.setString(1, transID_str);
+            stmt.executeUpdate();
+        }
+        catch (SQLException s) {
+            System.out.println("SQL Exception " + s.getMessage());
+        }
+        catch (ClassNotFoundException e) {
+            System.out.println("Class Exception " + e.getMessage());
+        }
+    }//GEN-LAST:event_transUpdateButtonActionPerformed
+
+    private void transDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transDeleteButtonActionPerformed
+        String transID_str = transIDField.getText();
+        
+        try {
+            PreparedStatement stmt = LoginGUI.getConnection().prepareStatement("DELETE from Transactioninfo where T_TransactionID = ?");
+            stmt.setString(1, transID_str);
+            stmt.executeUpdate();
+        }
+        catch (SQLException s) {
+            System.out.println("SQL Exception " + s.getMessage());
+        }
+        catch (ClassNotFoundException e) {
+            System.out.println("Class Exception " + e.getMessage());
+        }
+    }//GEN-LAST:event_transDeleteButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -234,7 +345,7 @@ public class TransactioninfoGUI extends javax.swing.JFrame {
     private javax.swing.JButton transFetchButton;
     private javax.swing.JTextField transIDField;
     private javax.swing.JComboBox<String> transModeBox;
-    private javax.swing.JTextField transRemarksBox;
+    private javax.swing.JTextField transRemarksField;
     private javax.swing.JComboBox<String> transTypeBox;
     private javax.swing.JButton transUpdateButton;
     // End of variables declaration//GEN-END:variables

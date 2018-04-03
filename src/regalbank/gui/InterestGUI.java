@@ -38,7 +38,7 @@ public class InterestGUI extends javax.swing.JFrame {
         rateTextField = new javax.swing.JTextField();
         submitButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(300, 300));
         setPreferredSize(new java.awt.Dimension(300, 300));
 

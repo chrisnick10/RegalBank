@@ -48,7 +48,7 @@ public class AccountinfoGUI extends javax.swing.JFrame {
         accountUpdateButton = new javax.swing.JButton();
         accountDeleteButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Input Account Information");
 
@@ -214,6 +214,7 @@ public class AccountinfoGUI extends javax.swing.JFrame {
         
         String insertAccount = "INSERT into Accountinfo (A_Balance, A_Interest, A_Overdraft, A_AccountType, A_Date, A_LastAccess) VALUES (\'"
                 +accountBalance_str+"\',\'"+accountInterest_str+"\',\'"+accountOverdraft_str+"\',\'"+accountType_str+"\',CURDATE(),NOW());";
+       
         
         try{
             Statement stmt = LoginGUI.getConnection().createStatement();
@@ -225,12 +226,14 @@ public class AccountinfoGUI extends javax.swing.JFrame {
         catch (SQLException s) {
             System.out.println("SQL exception " + s.getMessage());
         }
+        
+    
     }//GEN-LAST:event_accountCreateButtonActionPerformed
 
     private void accountFetchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountFetchButtonActionPerformed
         String accountID_str = accountIDField.getText();
         
-                try {
+            try {
             PreparedStatement stmt = LoginGUI.getConnection().prepareStatement("SELECT * from Accountinfo WHERE A_AccountID = ?");
             stmt.setString(1, accountID_str);
             ResultSet rslt = stmt.executeQuery();

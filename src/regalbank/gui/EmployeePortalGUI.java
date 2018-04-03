@@ -36,6 +36,7 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
         loanButton = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         accountButton = new javax.swing.JButton();
+        transactionButton = new javax.swing.JButton();
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Admin Portal");
@@ -76,6 +77,18 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
         jButton4.setText("Logout");
 
         accountButton.setText("Account");
+        accountButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                accountButtonActionPerformed(evt);
+            }
+        });
+
+        transactionButton.setText("Transaction");
+        transactionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transactionButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -95,9 +108,12 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
                                 .addComponent(complaintButton)
                                 .addGap(53, 53, 53)
                                 .addComponent(accountButton))
-                            .addComponent(cardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CustomerButton))
-                        .addGap(0, 169, Short.MAX_VALUE)))
+                            .addComponent(CustomerButton)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)
+                                .addComponent(transactionButton)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -110,7 +126,9 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
                     .addComponent(complaintButton)
                     .addComponent(accountButton))
                 .addGap(18, 18, 18)
-                .addComponent(cardButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cardButton)
+                    .addComponent(transactionButton))
                 .addGap(18, 18, 18)
                 .addComponent(CustomerButton)
                 .addGap(18, 18, 18)
@@ -142,6 +160,14 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         new LoanInputGUI().setVisible(true);
     }//GEN-LAST:event_loanButtonActionPerformed
+
+    private void transactionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionButtonActionPerformed
+        new TransactioninfoGUI().setVisible(true);
+    }//GEN-LAST:event_transactionButtonActionPerformed
+
+    private void accountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountButtonActionPerformed
+        new AccountinfoGUI().setVisible(true);
+    }//GEN-LAST:event_accountButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -187,5 +213,6 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton loanButton;
+    private javax.swing.JButton transactionButton;
     // End of variables declaration//GEN-END:variables
 }

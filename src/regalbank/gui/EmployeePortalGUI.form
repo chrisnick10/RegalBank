@@ -47,10 +47,14 @@
                               <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                               <Component id="accountButton" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="cardButton" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
                           <Component id="CustomerButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="cardButton" min="-2" pref="109" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                              <Component id="transactionButton" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace min="0" pref="169" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -68,7 +72,10 @@
                   <Component id="accountButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="cardButton" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="cardButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="transactionButton" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="CustomerButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -128,6 +135,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Account"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="accountButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="transactionButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Transaction"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="transactionButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
