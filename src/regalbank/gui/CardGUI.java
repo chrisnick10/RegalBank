@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Random;
 
 /**
  *
@@ -41,7 +42,7 @@ public class CardGUI extends javax.swing.JFrame {
         CardBox = new javax.swing.JComboBox<>();
         AccountField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        LoadID = new javax.swing.JButton();
+        LoadNum = new javax.swing.JButton();
         IDField = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         DeleteButton = new javax.swing.JButton();
@@ -67,7 +68,7 @@ public class CardGUI extends javax.swing.JFrame {
 
         jLabel3.setText("Account");
 
-        LoadID.setText("LoadByID");
+        LoadNum.setText("LoadByNum");
 
         jButton1.setText("Update");
 
@@ -97,7 +98,7 @@ public class CardGUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(LoadID)
+                                .addComponent(LoadNum)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(IDField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -124,7 +125,7 @@ public class CardGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(createButton)
-                    .addComponent(LoadID)
+                    .addComponent(LoadNum)
                     .addComponent(IDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1)
                     .addComponent(DeleteButton))
@@ -137,13 +138,43 @@ public class CardGUI extends javax.swing.JFrame {
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
         // TODO add your handling code here:
         String type = (String) CardBox.getSelectedItem();
+        Random random = new Random();
         //ASsume only can modify type
         try {
             Class.forName("com.mysql.jdbc.Driver");
             String connectionURL =
 "jdbc:mysql://localhost:3306/RegalBank?autoReconnect=true&useSSL=false";
-            String insert = "INSERT INTO CARD (CR_Type,CR_Assigned,CR_Expiration,CR_APR,CR_RewardRate,CR_Reward_Bonus,CR_LateFee,CR_AnnualFee,CR_Max,CR_AccountID) "
-                    + "Values ('" + type + "',CURDATE(), (CURDATE() + INTERVAL YEARS 4), 4.21, 12.2, 100,100,100,100)";
+            
+            String insert = " ";
+            
+            switch (type) {
+                case "Alpha":
+                    insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_APR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID) "
+                    + "Values (" + random.nextInt() + ",\"" + type + "\",CURDATE(), CURDATE(), 0, 0, 100,100,100,100)";    
+                    break;
+                case "Bravo":
+                    insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_APR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID) "
+                    + "Values (" + random.nextInt() + ",\"" + type + "\",CURDATE(), CURDATE(), 0, 0, 100,100,100,100)";
+                    break;
+                case "Charlie":
+                    insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_APR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID) "
+                    + "Values (" + random.nextInt() + ",\"" + type + "\",CURDATE(), CURDATE(), 0, 0, 100,100,100,100)";
+                    break;
+                case "Delta":
+                    insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_APR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID) "
+                    + "Values (" + random.nextInt() + ",\"" + type + "\",CURDATE(), CURDATE(), 0, 0, 100,100,100,100)";
+                    break;
+                case "Echo":
+                    insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_APR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID) "
+                    + "Values (" + random.nextInt() + ",\"" + type + "\",CURDATE(), CURDATE(), 0, 0, 100,100,100,100)";
+                    break;
+                case "Foxtrot":
+                    insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_APR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID) "
+                    + "Values (" + random.nextInt() + ",\"" + type + "\",CURDATE(), CURDATE(), 0, 0, 100,100,100,100)";
+                    break;
+                default:        
+            }
+            
             Connection connection = DriverManager.getConnection(connectionURL, "root", "");
             Statement statement = connection.createStatement();
             statement.executeUpdate(insert);
@@ -152,13 +183,13 @@ public class CardGUI extends javax.swing.JFrame {
             ResultSet set = statement.executeQuery(result);
             
             System.out.println("Executed Query");
-
+            String boxString = " ";
             while (set.next()) {
                 
-                for ( int i = 1; i <=15; i++ ) {
-                    System.out.print(set.getString(i) + " "); 
+                for ( int i = 1; i <=9; i++ ) {
+                    boxString = boxString + set.getString(i) + " "; 
                 }
-                System.out.println();
+                boxString = boxString + "\n";
              }
             connection.close();
         } catch ( ClassNotFoundException e) {
@@ -209,7 +240,7 @@ public class CardGUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> CardBox;
     private javax.swing.JButton DeleteButton;
     private javax.swing.JTextField IDField;
-    private javax.swing.JButton LoadID;
+    private javax.swing.JButton LoadNum;
     private javax.swing.JButton createButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
