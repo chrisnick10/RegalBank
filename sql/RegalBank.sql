@@ -3,6 +3,7 @@
 -- Host: localhost    Database: regalbank
 -- ------------------------------------------------------
 -- Server version	5.7.21-log
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -17,6 +18,7 @@
 --
 -- Table structure for table `accountinfo`
 --
+
 DROP TABLE IF EXISTS `accountinfo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -30,7 +32,7 @@ CREATE TABLE `accountinfo` (
   `A_Date` date DEFAULT NULL,
   PRIMARY KEY (`A_AccountID`),
   UNIQUE KEY `A_AccountID` (`A_AccountID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,6 +41,7 @@ CREATE TABLE `accountinfo` (
 
 LOCK TABLES `accountinfo` WRITE;
 /*!40000 ALTER TABLE `accountinfo` DISABLE KEYS */;
+INSERT INTO `accountinfo` VALUES (2,70000,0.12,100,'2018-04-03 17:12:38','checking','2018-04-03'),(3,2000,0.01,10,'2018-04-03 17:14:34','savings','2018-04-03'),(4,4000,0.11,12,'2018-04-03 17:17:00','checking','2018-04-03'),(5,2000,0.11,15,'2018-04-03 17:18:11','checking','2018-04-03'),(6,1000,0.56,100,'2018-04-03 17:19:30','checking','2018-04-03'),(7,10000,0.12,100,'2018-04-03 17:21:15','checking','2018-04-03');
 /*!40000 ALTER TABLE `accountinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -84,12 +87,12 @@ CREATE TABLE `branch` (
   `B_City` varchar(100) DEFAULT NULL,
   `B_State` varchar(50) DEFAULT NULL,
   `B_Phone` varchar(12) DEFAULT NULL,
-  `B_Manager` int(11) NOT NULL,
+  `B_Manager` int(11) DEFAULT NULL,
   PRIMARY KEY (`B_ID`),
   UNIQUE KEY `B_ID` (`B_ID`),
   KEY `FK_BranchEmployee` (`B_Manager`),
   CONSTRAINT `FK_BranchEmployee` FOREIGN KEY (`B_Manager`) REFERENCES `employee` (`E_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,6 +101,7 @@ CREATE TABLE `branch` (
 
 LOCK TABLES `branch` WRITE;
 /*!40000 ALTER TABLE `branch` DISABLE KEYS */;
+INSERT INTO `branch` VALUES (1,'BranchOne',111,'One Street','48044','Macomb','Michigan','586-777-8888',NULL);
 /*!40000 ALTER TABLE `branch` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -146,7 +150,7 @@ CREATE TABLE `complaint` (
   `CO_ComplaintFrom` int(11) NOT NULL,
   `CO_ComplaintTo` int(11) NOT NULL,
   `CO_Subject` varchar(40) NOT NULL,
-  `CO_Message` varchar(255), 
+  `CO_Message` varchar(255) DEFAULT NULL,
   `CO_Date` date DEFAULT NULL,
   `CO_ID` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`CO_ID`),
@@ -166,34 +170,6 @@ LOCK TABLES `complaint` WRITE;
 /*!40000 ALTER TABLE `complaint` DISABLE KEYS */;
 /*!40000 ALTER TABLE `complaint` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `login`
---
-
-DROP TABLE IF EXISTS `login`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `login` (
-  `LG_Username` varchar(50) NOT NULL,
-  `LG_Password` varchar(50) NOT NULL,
-  `LG_Question` varchar(100) NOT NULL,
-  `LG_Answer` varchar(100) NOT NULL,
-  `LG_ProfilePic` longblob,
-  `LG_Type` enum('employee','admin') NOT NULL,
-  UNIQUE KEY `LG_Username` (`LG_Username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-INSERT INTO login (LG_Username,LG_Password,LG_Question,LG_Answer,LG_Type) Values ("Basic","pass","Funny","Yes",'employee');
---
--- Dumping data for table `login`
---
-
-LOCK TABLES `login` WRITE;
-/*!40000 ALTER TABLE `login` DISABLE KEYS */;
-/*!40000 ALTER TABLE `login` ENABLE KEYS */;
-UNLOCK TABLES;
-
 
 --
 -- Table structure for table `customer`
@@ -220,7 +196,7 @@ CREATE TABLE `customer` (
   `CU_Phone` varchar(12) DEFAULT NULL,
   PRIMARY KEY (`CU_ID`),
   UNIQUE KEY `CU_ID` (`CU_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -229,6 +205,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
+INSERT INTO `customer` VALUES (1,'n','g','First','Middle','Last','2000-01-01',600,'Street','48309','CITY','MI','example@gmail.com','male','222-333-4444');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -263,7 +240,7 @@ CREATE TABLE `employee` (
   KEY `FK_EmployeeBranch` (`E_BranchID`),
   CONSTRAINT `FK_EmployeeBranch` FOREIGN KEY (`E_BranchID`) REFERENCES `branch` (`B_ID`),
   CONSTRAINT `FK_EmployeeLogin` FOREIGN KEY (`E_Username`) REFERENCES `login` (`LG_Username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -272,6 +249,7 @@ CREATE TABLE `employee` (
 
 LOCK TABLES `employee` WRITE;
 /*!40000 ALTER TABLE `employee` DISABLE KEYS */;
+INSERT INTO `employee` VALUES ('admin','admin','admin','admin','00000','admin','admin','000-000-0000','admin',0,1,'1980-01-01','2000-01-01',NULL,1,'admin',0),('Bob','Joe','Parrots','Roosevelt','48044','Macomb','Michigan','586-709-4567','Tester',70000,1,'1980-03-03','2010-02-02',NULL,2,'bobtest',111);
 /*!40000 ALTER TABLE `employee` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -293,6 +271,7 @@ CREATE TABLE `interest` (
   CONSTRAINT `FK_InterestAccount` FOREIGN KEY (`I_AccountID`) REFERENCES `accountinfo` (`A_AccountID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
 --
 -- Dumping data for table `interest`
 --
@@ -332,6 +311,34 @@ CREATE TABLE `loan` (
 LOCK TABLES `loan` WRITE;
 /*!40000 ALTER TABLE `loan` DISABLE KEYS */;
 /*!40000 ALTER TABLE `loan` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `login`
+--
+
+DROP TABLE IF EXISTS `login`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `login` (
+  `LG_Username` varchar(50) NOT NULL,
+  `LG_Password` varchar(50) NOT NULL,
+  `LG_Question` varchar(100) NOT NULL,
+  `LG_Answer` varchar(100) NOT NULL,
+  `LG_ProfilePic` longblob,
+  `LG_Type` enum('employee','admin') NOT NULL,
+  UNIQUE KEY `LG_Username` (`LG_Username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `login`
+--
+
+LOCK TABLES `login` WRITE;
+/*!40000 ALTER TABLE `login` DISABLE KEYS */;
+INSERT INTO `login` VALUES ('admin','password','?','admin',NULL,'admin'),('Basic','pass','Funny','Yes',NULL,'employee'),('bobtest','1234','default','default',NULL,'employee');
+/*!40000 ALTER TABLE `login` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -424,11 +431,11 @@ DROP TABLE IF EXISTS `transactioninfo`;
 CREATE TABLE `transactioninfo` (
   `T_Date` date NOT NULL,
   `T_Balance` double NOT NULL,
-  `T_Mode` enum('cash','check','credit','debit','other') NOT NULL,
+  `T_Mode` enum('cash','check','card','other') NOT NULL,
   `T_Remarks` varchar(100) DEFAULT NULL,
   `T_TransactionID` int(11) NOT NULL AUTO_INCREMENT,
   `T_AccountID` int(11) NOT NULL,
-  `T_Type` enum('credit','debit') NOT NULL,
+  `T_Type` enum('credit','debit') DEFAULT NULL,
   PRIMARY KEY (`T_TransactionID`),
   UNIQUE KEY `T_TransactionID` (`T_TransactionID`),
   KEY `FK_TransactionAccount` (`T_AccountID`),
@@ -454,5 +461,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-03-17 17:16:14
-
+-- Dump completed on 2018-04-03 17:53:11
