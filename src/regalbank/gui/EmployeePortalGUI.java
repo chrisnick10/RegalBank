@@ -34,7 +34,6 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
         cardButton = new javax.swing.JButton();
         CustomerButton = new javax.swing.JButton();
         loanButton = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         accountButton = new javax.swing.JButton();
         transactionButton = new javax.swing.JButton();
 
@@ -74,8 +73,6 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Logout");
-
         accountButton.setText("Account");
         accountButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,9 +95,6 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton4))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(loanButton)
@@ -133,9 +127,7 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
                 .addComponent(CustomerButton)
                 .addGap(18, 18, 18)
                 .addComponent(loanButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                .addComponent(jButton4)
-                .addContainerGap())
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         pack();
@@ -209,7 +201,6 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
     private javax.swing.JButton accountButton;
     private javax.swing.JButton cardButton;
     private javax.swing.JButton complaintButton;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton loanButton;

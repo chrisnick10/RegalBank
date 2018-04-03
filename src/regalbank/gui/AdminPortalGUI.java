@@ -29,7 +29,6 @@ public class AdminPortalGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         employeeButton = new javax.swing.JButton();
         branchButton = new javax.swing.JButton();
         maintainsButton = new javax.swing.JButton();
@@ -39,8 +38,6 @@ public class AdminPortalGUI extends javax.swing.JFrame {
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Admin Portal");
-
-        jButton1.setText("Logout");
 
         employeeButton.setText("Employee Form");
         employeeButton.addActionListener(new java.awt.event.ActionListener() {
@@ -78,11 +75,7 @@ public class AdminPortalGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton1))))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,9 +101,7 @@ public class AdminPortalGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(maintainsButton)
                     .addComponent(belongsButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addContainerGap())
+                .addContainerGap(166, Short.MAX_VALUE))
         );
 
         pack();
@@ -171,7 +162,6 @@ public class AdminPortalGUI extends javax.swing.JFrame {
     private javax.swing.JButton belongsButton;
     private javax.swing.JButton branchButton;
     private javax.swing.JButton employeeButton;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton maintainsButton;
     // End of variables declaration//GEN-END:variables
