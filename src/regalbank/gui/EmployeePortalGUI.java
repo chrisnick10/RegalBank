@@ -36,6 +36,7 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
         loanButton = new javax.swing.JButton();
         accountButton = new javax.swing.JButton();
         transactionButton = new javax.swing.JButton();
+        logoutButton = new javax.swing.JButton();
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Admin Portal");
@@ -87,6 +88,13 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
             }
         });
 
+        logoutButton.setText("Logout");
+        logoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -107,7 +115,10 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
                                 .addComponent(cardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(33, 33, 33)
                                 .addComponent(transactionButton)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(logoutButton)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -127,7 +138,9 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
                 .addComponent(CustomerButton)
                 .addGap(18, 18, 18)
                 .addComponent(loanButton)
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addComponent(logoutButton)
+                .addContainerGap())
         );
 
         pack();
@@ -160,6 +173,11 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
     private void accountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountButtonActionPerformed
         new AccountinfoGUI().setVisible(true);
     }//GEN-LAST:event_accountButtonActionPerformed
+
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+        this.dispose();
+        new LoginGUI().setVisible(true);
+    }//GEN-LAST:event_logoutButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -204,6 +222,7 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton loanButton;
+    private javax.swing.JButton logoutButton;
     private javax.swing.JButton transactionButton;
     // End of variables declaration//GEN-END:variables
 }
