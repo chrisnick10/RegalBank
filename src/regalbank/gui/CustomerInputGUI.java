@@ -553,6 +553,7 @@ public class CustomerInputGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_LoadIDButtonActionPerformed
 
     private void UpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateButtonActionPerformed
+                                            
         // TODO add your handling code here:
         String City_str = AddrCity.getText();
         String Num_str = AddrNum.getText();
@@ -575,9 +576,22 @@ public class CustomerInputGUI extends javax.swing.JFrame {
             Class.forName("com.mysql.jdbc.Driver");
             String connectionURL =
 "jdbc:mysql://localhost:3306/RegalBank?autoReconnect=true&useSSL=false";
-            String update = "UPDATE CUSTOMER +"
-                    + "SET CU_FNAME = \"" + FName_str + "\""
-                    + "WHERE CU_ID = " + Integer.parseInt(ID_str);
+            String update = "UPDATE CUSTOMER "
+                    + "SET CU_Student = \"" + Student_str + "\", "
+                    + "CU_CreditHistory = \'" + Credit_str + "\', "
+                    + "CU_FirstName = \"" + FName_str + "\", "
+                    + "CU_MiddleName = \"" + MName_str + "\", "
+                    + "CU_LastName = \"" + LName_str + "\", "
+                    + "CU_DOB = \'" + Date_str + "\', "
+                    + "CU_Number = " + Num_str + ", "
+                    + "CU_Street = \"" + Street_str + "\", "
+                    + "CU_ZIP = \"" + ZIP_str + "\", "
+                    + "CU_City = \"" + City_str + "\", "
+                    + "CU_State = \"" + State_str + "\", "
+                    + "CU_Email = \"" + Email_str + "\", "
+                    + "CU_Gender = \'" + Gender_str + "\', "
+                    + "CU_Phone = \"" + Phone_str + "\" "
+                    + "WHERE CU_ID = " + ID_str;
             Connection connection = DriverManager.getConnection(connectionURL, "root", "");
             Statement statement = connection.createStatement();
             statement.executeUpdate(update);
@@ -637,6 +651,7 @@ public class CustomerInputGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_DeleteButtonActionPerformed
 
+    
     /**
      * @param args the command line arguments
      */

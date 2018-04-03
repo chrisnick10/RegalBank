@@ -17,7 +17,6 @@
 --
 -- Table structure for table `accountinfo`
 --
-
 DROP TABLE IF EXISTS `accountinfo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -146,7 +145,8 @@ DROP TABLE IF EXISTS `complaint`;
 CREATE TABLE `complaint` (
   `CO_ComplaintFrom` int(11) NOT NULL,
   `CO_ComplaintTo` int(11) NOT NULL,
-  `CO_Subject` int(11) NOT NULL,
+  `CO_Subject` varchar(40) NOT NULL,
+  `CO_Message` varchar(255), 
   `CO_Date` date DEFAULT NULL,
   `CO_ID` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`CO_ID`),
@@ -184,7 +184,7 @@ CREATE TABLE `login` (
   UNIQUE KEY `LG_Username` (`LG_Username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
+INSERT INTO login (LG_Username,LG_Password,LG_Question,LG_Answer,LG_Type) Values ("Basic","pass","Funny","Yes",'employee');
 --
 -- Dumping data for table `login`
 --
@@ -293,7 +293,6 @@ CREATE TABLE `interest` (
   CONSTRAINT `FK_InterestAccount` FOREIGN KEY (`I_AccountID`) REFERENCES `accountinfo` (`A_AccountID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
 --
 -- Dumping data for table `interest`
 --
@@ -314,7 +313,7 @@ CREATE TABLE `loan` (
   `LA_LoanID` int(11) NOT NULL AUTO_INCREMENT,
   `LA_AmountTaken` double NOT NULL,
   `LA_AmountRepaid` double DEFAULT NULL,
-  `LA_InterestRate` decimal(2,2) DEFAULT NULL,
+  `LA_InterestRate` float(4,2) DEFAULT NULL,
   `LA_Type` varchar(50) DEFAULT NULL,
   `LA_Status` enum('Accepted','Rejected') DEFAULT NULL,
   `LA_Source` varchar(50) DEFAULT NULL,
@@ -456,3 +455,4 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2018-03-17 17:16:14
+
