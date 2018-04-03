@@ -5,6 +5,13 @@
  */
 package regalbank.gui;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author cjwn
@@ -27,21 +34,123 @@ public class TimeLogGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel1 = new javax.swing.JLabel();
+        checkInButton = new javax.swing.JButton();
+        checkOutButton = new javax.swing.JButton();
+        dateLabel = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        employeeTextField = new javax.swing.JTextField();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Time Log");
+
+        checkInButton.setText("Check In");
+        checkInButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkInButtonActionPerformed(evt);
+            }
+        });
+
+        checkOutButton.setText("Check Out");
+        checkOutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkOutButtonActionPerformed(evt);
+            }
+        });
+
+        dateLabel.setText("Date:");
+
+        jLabel3.setText("Employee (ID):");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(dateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(employeeTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(checkInButton)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(checkOutButton)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(dateLabel)
+                .addGap(46, 46, 46)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(employeeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(checkInButton)
+                    .addComponent(checkOutButton))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void checkInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkInButtonActionPerformed
+        // TODO add your handling code here:
+        
+        String employeeID = employeeTextField.getText();
+        
+        String insertQuery = "Insert into timelog (TL_ID, TL_Employee, TL_CheckOut, TL_CheckIn) values "+
+                "(NULL, "+employeeID+", NULL, CURRENT_TIMESTAMP";
+        
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            String connectionURL = "jdbc:mysql://localhost:3306/RegalBank?autoReconnect=true&useSSL=false";
+            Connection connection = DriverManager.getConnection(connectionURL, "root", "");
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(insertQuery);
+            this.dispose();
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(TimeLogGUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(TimeLogGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_checkInButtonActionPerformed
+
+    private void checkOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkOutButtonActionPerformed
+        // TODO add your handling code here:
+         String employeeID = employeeTextField.getText();
+        
+        String insertQuery = "Insert into timelog (TL_ID, TL_Employee, TL_CheckOut, TL_CheckIn) values "+
+                "(NULL, "+employeeID+", CURRENT_TIMESTAMP, NULL";
+        
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            String connectionURL = "jdbc:mysql://localhost:3306/RegalBank?autoReconnect=true&useSSL=false";
+            Connection connection = DriverManager.getConnection(connectionURL, "root", "");
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(insertQuery);
+            this.dispose();
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(TimeLogGUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(TimeLogGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_checkOutButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +188,11 @@ public class TimeLogGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton checkInButton;
+    private javax.swing.JButton checkOutButton;
+    private javax.swing.JLabel dateLabel;
+    private javax.swing.JTextField employeeTextField;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }

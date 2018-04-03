@@ -34,7 +34,8 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
         cardButton = new javax.swing.JButton();
         CustomerButton = new javax.swing.JButton();
         loanButton = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        logoutButton = new javax.swing.JButton();
+        timeLogButton = new javax.swing.JButton();
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Admin Portal");
@@ -72,7 +73,19 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Logout");
+        logoutButton.setText("Logout");
+        logoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutButtonActionPerformed(evt);
+            }
+        });
+
+        timeLogButton.setText("Time Log");
+        timeLogButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                timeLogButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -84,14 +97,17 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(complaintButton)
                             .addComponent(cardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(CustomerButton)
                             .addComponent(loanButton))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton4)))
+                        .addComponent(logoutButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(complaintButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(timeLogButton)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -100,7 +116,9 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(complaintButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(complaintButton)
+                    .addComponent(timeLogButton))
                 .addGap(18, 18, 18)
                 .addComponent(cardButton)
                 .addGap(18, 18, 18)
@@ -108,7 +126,7 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(loanButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                .addComponent(jButton4)
+                .addComponent(logoutButton)
                 .addContainerGap())
         );
 
@@ -134,6 +152,17 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         new LoanInputGUI().setVisible(true);
     }//GEN-LAST:event_loanButtonActionPerformed
+
+    private void timeLogButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeLogButtonActionPerformed
+        // TODO add your handling code here:
+        new TimeLogGUI().setVisible(true);
+    }//GEN-LAST:event_timeLogButtonActionPerformed
+
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        new LoginGUI().setVisible(true);
+    }//GEN-LAST:event_logoutButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,9 +203,10 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
     private javax.swing.JButton CustomerButton;
     private javax.swing.JButton cardButton;
     private javax.swing.JButton complaintButton;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton loanButton;
+    private javax.swing.JButton logoutButton;
+    private javax.swing.JButton timeLogButton;
     // End of variables declaration//GEN-END:variables
 }
