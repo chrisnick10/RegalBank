@@ -117,7 +117,7 @@ public class LoginGUI extends javax.swing.JFrame {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             String connectionURL = "jdbc:mysql://localhost:3306/RegalBank?autoReconnect=true&useSSL=false";
-            Connection connection = DriverManager.getConnection(connectionURL, "root", "radar312");
+            Connection connection = DriverManager.getConnection(connectionURL, "root", "");
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery(query);
             
@@ -149,7 +149,7 @@ public class LoginGUI extends javax.swing.JFrame {
         if ( c == null ) {
             Class.forName("com.mysql.jdbc.Driver");
             // Changed default password to "". 
-            c = DriverManager.getConnection("jdbc:mysql://localhost:3306/regalbank?useSSL=false","root","radar312");
+            c = DriverManager.getConnection("jdbc:mysql://localhost:3306/regalbank?useSSL=false","root","");
         }
         return c;
 }

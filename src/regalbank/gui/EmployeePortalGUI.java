@@ -37,6 +37,7 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
         accountButton = new javax.swing.JButton();
         transactionButton = new javax.swing.JButton();
         logoutButton = new javax.swing.JButton();
+        timeLogButton = new javax.swing.JButton();
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Admin Portal");
@@ -95,6 +96,13 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
             }
         });
 
+        timeLogButton.setText("Time Log");
+        timeLogButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                timeLogButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -103,22 +111,23 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(loanButton)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(complaintButton)
-                                .addGap(53, 53, 53)
-                                .addComponent(accountButton))
-                            .addComponent(CustomerButton)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(cardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(33, 33, 33)
-                                .addComponent(transactionButton)))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(logoutButton)))
+                        .addComponent(logoutButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cardButton, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+                                    .addComponent(CustomerButton)
+                                    .addComponent(complaintButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(33, 33, 33)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(timeLogButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(transactionButton, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+                                    .addComponent(accountButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(loanButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -135,7 +144,9 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
                     .addComponent(cardButton)
                     .addComponent(transactionButton))
                 .addGap(18, 18, 18)
-                .addComponent(CustomerButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CustomerButton)
+                    .addComponent(timeLogButton))
                 .addGap(18, 18, 18)
                 .addComponent(loanButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
@@ -178,6 +189,11 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
         this.dispose();
         new LoginGUI().setVisible(true);
     }//GEN-LAST:event_logoutButtonActionPerformed
+
+    private void timeLogButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeLogButtonActionPerformed
+        // TODO add your handling code here:
+        new TimeLogGUI().setVisible(true);
+    }//GEN-LAST:event_timeLogButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -223,6 +239,7 @@ public class EmployeePortalGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton loanButton;
     private javax.swing.JButton logoutButton;
+    private javax.swing.JButton timeLogButton;
     private javax.swing.JButton transactionButton;
     // End of variables declaration//GEN-END:variables
 }
