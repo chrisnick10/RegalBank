@@ -112,8 +112,8 @@ public class TimeLogGUI extends javax.swing.JFrame {
         
         String employeeID = employeeTextField.getText();
         
-        String insertQuery = "Insert into timelog (TL_ID, TL_Employee, TL_CheckOut, TL_CheckIn) values "+
-                "(NULL, "+employeeID+", NULL, CURRENT_TIMESTAMP";
+        String insertQuery = "Insert into timelog (TL_ID, TL_Employee, TL_CheckIn, TL_CheckOut) values "+
+                "(NULL, "+employeeID+", NOW(), NULL);";
         
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -134,8 +134,8 @@ public class TimeLogGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
          String employeeID = employeeTextField.getText();
         
-        String insertQuery = "Insert into timelog (TL_ID, TL_Employee, TL_CheckOut, TL_CheckIn) values "+
-                "(NULL, "+employeeID+", CURRENT_TIMESTAMP, NULL";
+        String insertQuery = "Insert into timelog (TL_ID, TL_Employee, TL_CheckIn, TL_CheckOut) values "+
+                "(NULL, "+employeeID+", NULL, NOW());";
         
         try {
             Class.forName("com.mysql.jdbc.Driver");
