@@ -14,10 +14,10 @@ import java.sql.*;
  * @author cjwn
  */
 public class Utilities {
-    private String filePath = "sql/DataInsertion.sql";
+    private static String filePath = "sql/DataInsertion.sql";
     public static Connection c;
     
-    public void insertData() {
+    public static void insertData() {
         String s = new String();
         StringBuffer sb = new StringBuffer();
         
@@ -39,12 +39,12 @@ public class Utilities {
             // trim the whitespaces
             for (int i = 0; i < inst.length; i++) {
                 if (!inst[i].trim().equals("")) {
-                    
+                    System.out.println(inst[i]);
                 }
             }
             
-        } catch (Exception E) {
-            
+        } catch (Exception e) {
+            System.out.println(e);
         }
     }
     
