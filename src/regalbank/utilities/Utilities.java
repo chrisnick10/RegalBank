@@ -5,10 +5,55 @@
  */
 package regalbank.utilities;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.sql.*;
+
 /**
  *
  * @author cjwn
  */
 public class Utilities {
+    private String filePath = "sql/DataInsertion.sql";
+    public static Connection c;
     
+    public void insertData() {
+        String s = new String();
+        StringBuffer sb = new StringBuffer();
+        
+        try {
+            FileReader fr = new FileReader(filePath);
+            
+            BufferedReader br = new BufferedReader(fr);
+            
+            while ((s = br.readLine()) != null) {
+                sb.append(s);
+            }
+            br.close();
+            
+            //splitter 
+            String[] inst = sb.toString().split(";");
+            Connection c = getConnection();
+            Statement  st = c.createStatement();
+            
+            // trim the whitespaces
+            for (int i = 0; i < inst.length; i++) {
+                if (!inst[i].trim().equals("")) {
+                    
+                }
+            }
+            
+        } catch (Exception E) {
+            
+        }
+    }
+    
+    public static Connection getConnection() throws SQLException, ClassNotFoundException {
+        if ( c == null ) {
+            Class.forName("com.mysql.jdbc.Driver");
+            // Changed default password to "". 
+            c = DriverManager.getConnection("jdbc:mysql://localhost:3306/regalbank?useSSL=false","root","");
+        }
+        return c;
+    }
 }
