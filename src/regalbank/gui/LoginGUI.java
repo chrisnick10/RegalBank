@@ -14,6 +14,7 @@ import java.awt.event.*;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import regalbank.utilities.Utilities;
 
 /**
  *
@@ -64,6 +65,11 @@ public class LoginGUI extends javax.swing.JFrame {
         });
 
         loadDataButton.setText("Load Data");
+        loadDataButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loadDataButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -151,6 +157,11 @@ public class LoginGUI extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_LoginButtonActionPerformed
+
+    private void loadDataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadDataButtonActionPerformed
+        // TODO add your handling code here:
+        Utilities.insertData();
+    }//GEN-LAST:event_loadDataButtonActionPerformed
 
     public static Connection getConnection() throws ClassNotFoundException,SQLException {
         if ( c == null ) {
