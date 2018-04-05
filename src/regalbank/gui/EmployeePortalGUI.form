@@ -41,25 +41,22 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="cardButton" alignment="0" max="32767" attributes="0"/>
+                              <Component id="CustomerButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="complaintButton" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="maintainsButton" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="loanButton" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="cardButton" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="CustomerButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="complaintButton" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Component id="maintainsButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="belongsButton" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="timeLogButton" max="32767" attributes="0"/>
-                                      <Component id="transactionButton" alignment="0" pref="105" max="32767" attributes="0"/>
-                                      <Component id="accountButton" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="performanceButton" min="-2" max="-2" attributes="0"/>
+                          <Component id="belongsButton" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="timeLogButton" max="32767" attributes="0"/>
+                              <Component id="transactionButton" alignment="0" pref="105" max="32767" attributes="0"/>
+                              <Component id="accountButton" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -90,7 +87,10 @@
                   <Component id="timeLogButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="loanButton" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="loanButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="performanceButton" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="maintainsButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -188,6 +188,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="belongsButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="performanceButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Performance"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="performanceButtonActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
