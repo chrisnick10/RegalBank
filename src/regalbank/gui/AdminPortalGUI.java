@@ -31,8 +31,6 @@ public class AdminPortalGUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         employeeButton = new javax.swing.JButton();
         branchButton = new javax.swing.JButton();
-        maintainsButton = new javax.swing.JButton();
-        belongsButton = new javax.swing.JButton();
         logoutButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -54,20 +52,6 @@ public class AdminPortalGUI extends javax.swing.JFrame {
             }
         });
 
-        maintainsButton.setText("Maintains");
-        maintainsButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maintainsButtonActionPerformed(evt);
-            }
-        });
-
-        belongsButton.setText("Belongs");
-        belongsButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                belongsButtonActionPerformed(evt);
-            }
-        });
-
         logoutButton.setText("Logout");
         logoutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,13 +70,9 @@ public class AdminPortalGUI extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(47, 47, 47)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(employeeButton)
-                            .addComponent(maintainsButton))
+                        .addComponent(employeeButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(branchButton)
-                            .addComponent(belongsButton))
+                        .addComponent(branchButton)
                         .addGap(46, 46, 46))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -108,11 +88,7 @@ public class AdminPortalGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(employeeButton)
                     .addComponent(branchButton))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(maintainsButton)
-                    .addComponent(belongsButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
                 .addComponent(logoutButton)
                 .addContainerGap())
         );
@@ -127,14 +103,6 @@ public class AdminPortalGUI extends javax.swing.JFrame {
     private void branchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_branchButtonActionPerformed
         new BranchInputGUI().setVisible(true);
     }//GEN-LAST:event_branchButtonActionPerformed
-
-    private void maintainsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintainsButtonActionPerformed
-        new MaintainsInputGUI().setVisible(true);
-    }//GEN-LAST:event_maintainsButtonActionPerformed
-
-    private void belongsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_belongsButtonActionPerformed
-        new BelongsInputGUI().setVisible(true);
-    }//GEN-LAST:event_belongsButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
         this.dispose();
@@ -177,11 +145,9 @@ public class AdminPortalGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton belongsButton;
     private javax.swing.JButton branchButton;
     private javax.swing.JButton employeeButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton logoutButton;
-    private javax.swing.JButton maintainsButton;
     // End of variables declaration//GEN-END:variables
 }
