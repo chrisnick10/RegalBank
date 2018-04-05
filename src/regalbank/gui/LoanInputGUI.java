@@ -337,6 +337,7 @@ public class LoanInputGUI extends javax.swing.JFrame {
             Connection connection = DriverManager.getConnection(connectionURL, "root", "");
             Statement statement = connection.createStatement();
             statement.executeUpdate(deleteQuery);
+            this.dispose();
             
             
         } catch (ClassNotFoundException ex) {
