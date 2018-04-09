@@ -12,8 +12,6 @@ insert into customer (CU_ID, CU_Student, CU_CreditHistory, CU_FirstName, CU_Midd
 insert into customer (CU_ID, CU_Student, CU_CreditHistory, CU_FirstName, CU_MiddleName, CU_LastName, CU_DOB, CU_Number, CU_Street, CU_ZIP, CU_City, CU_State, CU_Email, CU_Gender, CU_Phone) values (3, "Y", "E", "Lucy", null, "Jones", "1980-03-12", "9564", "Main St", "56784", "Miami", "FL", "lucy123@gmail.com", "female", "2104569999");
 
 
-
-
 insert into loan (LA_LoanID, LA_AmountTaken, LA_AmountRepaid, LA_InterestRate, LA_Type, LA_Status, LA_Source, LA_Customer) values (1, "500000.00", "10000.00", ".92", "Standard", "Accepted", "Work", "1");
 insert into loan (LA_LoanID, LA_AmountTaken, LA_AmountRepaid, LA_InterestRate, LA_Type, LA_Status, LA_Source, LA_Customer) values (2, "20000.00", "1000.00", ".12", "Home", "Accepted", "Realtor", "3");
 
@@ -29,7 +27,7 @@ INSERT INTO employee (E_ID,E_FName,E_MName,E_LName,E_Number,E_Street,E_ZIP,E_Cit
 
 insert into timelog (TL_ID, TL_Employee, TL_CheckOut, TL_CheckIn) values (1, "1", NULL, "2018-04-01 9:00:00");
 insert into timelog (TL_ID, TL_Employee, TL_CheckOut, TL_CheckIn) values (2, "1", "2018-04-01 3:00:00", NULL);
-insert into timelog (TL_ID, TL_Employee, TL_CheckOut, TL_CheckIn) values (2, "2", NULL, "2018-04-09 8:00:00");
+insert into timelog (TL_ID, TL_Employee, TL_CheckOut, TL_CheckIn) values (3, "2", NULL, "2018-04-09 8:00:00");
 
 Insert into AccountInfo(A_AccountID, A_Balance, A_Interest, A_Overdraft, A_LastAccess, A_AccountType, A_Date) values (1, 1000, 0.1, 9000, curdate(), 'checking', '2011-01-28');
 Insert into AccountInfo(A_AccountID, A_Balance, A_Interest, A_Overdraft, A_LastAccess, A_AccountType, A_Date) values (2, 12000, 0.4, 30000, curdate(), 'checking', '2000-01-28');
