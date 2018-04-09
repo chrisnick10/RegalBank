@@ -259,6 +259,9 @@ insert into maintains (M_CU_ID, M_A_AccountID) values (3, 3);
 insert into maintains (M_CU_ID, M_A_AccountID) values (1, 4);
 
 
+insert into interest (I_Date, I_OldBalance, I_NewBalance, I_Rate, I_AccountID) values (curdate(), "1000", "1100", "0.1", "1");
+insert into interest (I_Date, I_OldBalance, I_NewBalance, I_Rate, I_AccountID) values (curdate(), "12000", "16800", "0.4", "2");
+insert into interest (I_Date, I_OldBalance, I_NewBalance, I_Rate, I_AccountID) values (curdate(), "90000", "144000", "0.6", "3");
 
 Insert into Card ( CR_Number, CR_Type, CR_Assigned, CR_Expiration, CR_IntroAPR, CR_RegAPR, CR_RewardRate,CR_RewardBonus, CR_LateFee, CR_AnnualFee, CR_AccountID, CR_Rating) values ("22345", 'Alpha', curdate(), DATE_ADD(curdate(), INTERVAL 4 YEAR), "0% for 12 months", 0.15,null, 30, 0, 0, 1, 'b');
 Insert into Card ( CR_Number, CR_Type, CR_Assigned, CR_Expiration, CR_IntroAPR, CR_RegAPR, CR_RewardRate,CR_RewardBonus, CR_LateFee, CR_AnnualFee, CR_AccountID, CR_Rating) values ("54321", 'Alpha', curdate(),  DATE_ADD(curdate(), INTERVAL 4 YEAR), "0% for 12 months", 0.15,null, 30, 0, 0, 2, 'g');
