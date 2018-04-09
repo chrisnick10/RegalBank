@@ -200,7 +200,6 @@ CREATE TABLE `transactioninfo` (
 );
 set foreign_key_checks = 1;
 
-
 insert into login (LG_Username, LG_Password, LG_Question, LG_Answer, LG_ProfilePic, LG_Type) values ("admin", "password", "what is your dad's name?", "James", NULL, "admin");
 insert into login (LG_Username, LG_Password, LG_Question, LG_Answer, LG_ProfilePic, LG_Type) values ("christian", "password", "what is your dog's name?", "Luke", "NULL", "employee");
 insert into login (LG_Username, LG_Password, LG_Question, LG_Answer, LG_ProfilePic, LG_Type) values ("daniel", "password", "question about yourself", "idk", NULL, "employee");
@@ -240,7 +239,7 @@ INSERT INTO employee (E_ID,E_FName,E_MName,E_LName,E_Number,E_Street,E_ZIP,E_Cit
 
 insert into timelog (TL_ID, TL_Employee, TL_CheckOut, TL_CheckIn) values (1, "1", NULL, "2018-04-01 9:00:00");
 insert into timelog (TL_ID, TL_Employee, TL_CheckOut, TL_CheckIn) values (2, "1", "2018-04-01 3:00:00", NULL);
-insert into timelog (TL_ID, TL_Employee, TL_CheckOut, TL_CheckIn) values (2, "2", NULL, "2018-04-09 8:00:00");
+insert into timelog (TL_ID, TL_Employee, TL_CheckOut, TL_CheckIn) values (3, "2", NULL, "2018-04-09 8:00:00");
 
 Insert into AccountInfo(A_AccountID, A_Balance, A_Interest, A_Overdraft, A_LastAccess, A_AccountType, A_Date) values (1, 1000, 0.1, 9000, curdate(), 'checking', '2011-01-28');
 Insert into AccountInfo(A_AccountID, A_Balance, A_Interest, A_Overdraft, A_LastAccess, A_AccountType, A_Date) values (2, 12000, 0.4, 30000, curdate(), 'checking', '2000-01-28');
@@ -280,14 +279,13 @@ Insert into Card ( CR_Number, CR_Type, CR_Assigned, CR_Expiration, CR_IntroAPR, 
 Insert into Card ( CR_Number, CR_Type, CR_Assigned, CR_Expiration, CR_IntroAPR, CR_RegAPR, CR_RewardRate,CR_RewardBonus, CR_LateFee, CR_AnnualFee, CR_AccountID, CR_Rating) values ("87607", 'Foxtrot', curdate(), DATE_ADD(curdate(), INTERVAL 4 YEAR), "0% for 15 months", 0.16,1.5, 30, 150, null, 11, 'e');
 Insert into Card ( CR_Number, CR_Type, CR_Assigned, CR_Expiration, CR_IntroAPR, CR_RegAPR, CR_RewardRate,CR_RewardBonus, CR_LateFee, CR_AnnualFee, CR_AccountID, CR_Rating) values ("87707", 'Foxtrot', curdate(),  DATE_ADD(curdate(), INTERVAL 4 YEAR), "0% for 15 months", 0.16,1.5, 30, 150, null, 11, 'e');
 
-insert into complaint (CO_ID, CO_ComplaintFrom, CO_ComplaintTo, CO_Subject, CO_Message, CO_Date) values (1, 1, 2, "Messy", "Doesn't clean up", '2018-04-04');
-insert into complaint (CO_ID, CO_ComplaintFrom, CO_ComplaintTo, CO_Subject, CO_Message, CO_Date) values (2, 2, 1, "Too Clean", "Complains about cleaning up all the time", '2018-04-05');
-
-insert into interest (I_Date, I_AccountID, I_OldBalance, I_NewBalance, I_Rate) values ('2018-03-15', 1, 1000, 1010, .01);
-
-insert into performance (P_ID, P_Employee, P_Date, P_Record) values (1, 1, '2018-01-03', "Earned gold star");
-
-insert into transactioninfo (T_TransactionID, T_AccountID, T_Date, T_Mode, T_Balance, T_Type, T_Remarks) values (1, 2, '2018-04-09', 'card', 100, 'debit', "Bought clothes");
+Insert into Complaint ( CO_ComplaintFrom, CO_ComplaintTo, CO_Subject, CO_Message, CO_Date ) values (1,2, "Behavior Complaint", "This employee has insulted many times", curdate());
+Insert into Complaint ( CO_ComplaintFrom, CO_ComplaintTo, CO_Subject, CO_Message, CO_Date ) values (1,2, "More Behavior Complaints", "This employee keeps insulting me.", curdate());
+Insert into Complaint ( CO_ComplaintFrom, CO_ComplaintTo, CO_Subject, CO_Message, CO_Date ) values (1,2, "Time Requested Off", "I need longer breaks", curdate());
+Insert into Complaint ( CO_ComplaintFrom, CO_ComplaintTo, CO_Subject, CO_Message, CO_Date ) values (3,2, "Noise Complaint", "My coworker keeps blasting his music.", curdate());
+Insert into Complaint ( CO_ComplaintFrom, CO_ComplaintTo, CO_Subject, CO_Message, CO_Date ) values (3,2, "Noise Complaint", "My coworker is always talking.", curdate());
+Insert into Complaint ( CO_ComplaintFrom, CO_ComplaintTo, CO_Subject, CO_Message, CO_Date ) values (2,1, "Time Requested Off Response", "I will see what I can do.", curdate());
+Insert into Complaint ( CO_ComplaintFrom, CO_ComplaintTo, CO_Subject, CO_Message, CO_Date ) values (2,3, "Noise Complaint Response", "I'll deal with it.", curdate());
 
 
 
