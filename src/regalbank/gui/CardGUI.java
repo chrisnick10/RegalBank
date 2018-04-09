@@ -77,6 +77,11 @@ public class CardGUI extends javax.swing.JFrame {
         jLabel3.setText("Account");
 
         LoadNum.setText("LoadByNum");
+        LoadNum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LoadNumActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Update");
 
@@ -209,31 +214,31 @@ public class CardGUI extends javax.swing.JFrame {
             
             String insert = " ";
             
-            switch (type) {
+           switch (type) {
                 case "Alpha":
-                    insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_IntroAPR, CR_RegAGR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID, CR_Rating) "
-                    + "Values (" + Number + ",\"" + type + "\",CURDATE(), DateAdd(CURDATE(), INTERVAL 4 YEAR), \"0% APR for 12 months\", 0.15, null, 30,0,0,1," + credit_str + ")";    
+                    insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_IntroAPR, CR_RegAPR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID,CR_Rating) "
+                    + "Values (" + Number + ",\"" + type + "\",CURDATE(), DATE_ADD(curdate(), INTERVAL 4 YEAR), \"0% for 12 months\", 0.15,null,30,0,0,1,\'" + credit_str + "\')";      
                     break;
                 case "Bravo":
-                    //insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_APR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID, CR_Rating) "
-                    //+ "Values (" + Number + ",\"" + type + "\",CURDATE(), DateAdd(CURDATE(), INTERVAL 4 YEAR), \"0% APR for 12 months\", 0.15, null, 30,0,0,1," + credit_str + ")";    
+                    insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_IntroAPR, CR_RegAPR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID,CR_Rating) "
+                    + "Values (" + Number + ",\"" + type + "\",CURDATE(), DATE_ADD(curdate(), INTERVAL 4 YEAR), \"0% for 12 months\", 0.15,1,40,0,0,1,\'" + credit_str + "\')"; 
                     break;
                 case "Charlie":
-                    //insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_APR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID,CR_Rating) "
-                    //+ "Values (" + Number + ",\"" + type + "\",CURDATE(), DateAdd(CURDATE(), INTERVAL 4 YEAR), \"0% APR for 12 months\", 0.15, null, 30,0,0,1,'g')";
+                   insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_IntroAPR, CR_RegAPR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID,CR_Rating) "
+                    + "Values (" + Number + ",\"" + type + "\",CURDATE(), DATE_ADD(curdate(), INTERVAL 4 YEAR), \"0% for 15 months\", 0.15,3,35,150,0,1,\'" + credit_str + "\')"; 
                     break;
                 case "Delta":
-                    //insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_APR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID,CR_Rating) "
-                    //+ "Values (" + Number + ",\"" + type + "\",CURDATE(), DateAdd(CURDATE(), INTERVAL 4 YEAR), \"0% APR for 12 months\", 0.15, null, 30,0,0,1,'g')";
+                    insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_IntroAPR, CR_RegAPR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID,CR_Rating) "
+                    + "Values (" + Number + ",\"" + type + "\",CURDATE(), DATE_ADD(curdate(), INTERVAL 4 YEAR), \"0% for 12 months\", 0.14,3,30,0,0,1,\'" + credit_str + "\')"; 
                     break;
                 case "Echo":
-                    //insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_APR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID,CR_Rating) "
-                    //+ "Values (" + Number + ",\"" + type + "\",CURDATE(), DateAdd(CURDATE(), INTERVAL 4 YEAR), \"0% APR for 12 months\", 0.15, null, 30,0,0,1,'g')";
-                    break;
+                   insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_IntroAPR, CR_RegAPR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID,CR_Rating) "
+                    + "Values (" + Number + ",\"" + type + "\",CURDATE(), DATE_ADD(curdate(), INTERVAL 4 YEAR), \"0% for 12 months\", 0.14,3,10,150,38,1,\'" + credit_str + "\')"; 
+                   break;
                 case "Foxtrot":
-                    //insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_APR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID,CR_Rating) "
-                    //+ "Values (" + Number + ",\"" + type + "\",CURDATE(), DateAdd(CURDATE(), INTERVAL 4 YEAR), \"0% APR for 12 months\", 0.15, null, 30,0,0,1,'g')";
-                    break;
+                    insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_IntroAPR, CR_RegAPR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID,CR_Rating) "
+                    + "Values (" + Number + ",\"" + type + "\",CURDATE(), DATE_ADD(curdate(), INTERVAL 4 YEAR), \"0% for 15 months\", 0.16,1.5,30,150,0,1,\'" + credit_str + "\')"; 
+                   break;
                 default:        
             }
             
@@ -276,6 +281,11 @@ public class CardGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         credit_str = 'e';
     }//GEN-LAST:event_ExButtonActionPerformed
+
+    private void LoadNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoadNumActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_LoadNumActionPerformed
 
     /**
      * @param args the command line arguments

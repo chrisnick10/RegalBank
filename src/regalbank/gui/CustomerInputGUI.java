@@ -595,19 +595,7 @@ public class CustomerInputGUI extends javax.swing.JFrame {
             Connection connection = DriverManager.getConnection(connectionURL, "root", "");
             Statement statement = connection.createStatement();
             statement.executeUpdate(update);
-            
-            String q5 = "select * from Customer";
-            ResultSet set = statement.executeQuery(q5);
-            
-            System.out.println("Executed Query");
 
-            while (set.next()) {
-                
-                for ( int i = 1; i <=15; i++ ) {
-                    System.out.print(set.getString(i) + " "); 
-                }
-                System.out.println();
-             }
             connection.close();
         } catch ( ClassNotFoundException e) {
             System.out.println("ClassException");
@@ -629,19 +617,7 @@ public class CustomerInputGUI extends javax.swing.JFrame {
             Connection connection = DriverManager.getConnection(connectionURL, "root", "");
             Statement statement = connection.createStatement();
             statement.executeUpdate(delete);
-            
-            String q5 = "select * from Customer";
-            ResultSet set = statement.executeQuery(q5);
-            
-            System.out.println("Executed Query");
 
-            while (set.next()) {
-                
-                for ( int i = 1; i <=15; i++ ) {
-                    System.out.print(set.getString(i) + " "); 
-                }
-                System.out.println();
-             }
             connection.close();
         } catch ( ClassNotFoundException e) {
             System.out.println("ClassException");
