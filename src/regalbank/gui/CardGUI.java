@@ -150,27 +150,28 @@ public class CardGUI extends javax.swing.JFrame {
             switch (type) {
                 case "Alpha":
                     insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_APR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID) "
-                    + "Values (" + random.nextInt() + ",\"" + type + "\",CURDATE(), CURDATE(), 0, 0, 100,100,100,100)";    
+                    + "Values (" + random.nextInt() + ",\"" + type + "\",CURDATE(), DATE_ADD(curdate(), INTERVAL 4 YEAR), \"0% for 12 months\", 0.15,null,30,0)";    
                     break;
                 case "Bravo":
                     insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_APR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID) "
-                    + "Values (" + random.nextInt() + ",\"" + type + "\",CURDATE(), CURDATE(), 0, 0, 100,100,100,100)";
+                    + "Values (" + random.nextInt() + ",\"" + type + "\",CURDATE(), DATE_ADD(curdate(), INTERVAL 4 YEAR), \"0% for 12 months\", 0.15,null,30,0)";    
+
                     break;
                 case "Charlie":
                     insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_APR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID) "
-                    + "Values (" + random.nextInt() + ",\"" + type + "\",CURDATE(), CURDATE(), 0, 0, 100,100,100,100)";
+                    + "Values (" + random.nextInt() + ",\"" + type + "\",CURDATE(), DATE_ADD(curdate(), INTERVAL 4 YEAR), \"0% for 15 months\", 0.15,null,30,0)";    
                     break;
                 case "Delta":
                     insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_APR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID) "
-                    + "Values (" + random.nextInt() + ",\"" + type + "\",CURDATE(), CURDATE(), 0, 0, 100,100,100,100)";
-                    break;
+                    + "Values (" + random.nextInt() + ",\"" + type + "\",CURDATE(), DATE_ADD(curdate(), INTERVAL 4 YEAR), \"0% for 12 months\", 0.15,null,30,0)";    
+                     break;
                 case "Echo":
                     insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_APR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID) "
-                    + "Values (" + random.nextInt() + ",\"" + type + "\",CURDATE(), CURDATE(), 0, 0, 100,100,100,100)";
+                    + "Values (" + random.nextInt() + ",\"" + type + "\",CURDATE(), DATE_ADD(curdate(), INTERVAL 4 YEAR), \"0% for 12 months\", 0.15,null,30,0)";    
                     break;
                 case "Foxtrot":
                     insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_APR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID) "
-                    + "Values (" + random.nextInt() + ",\"" + type + "\",CURDATE(), CURDATE(), 0, 0, 100,100,100,100)";
+                    + "Values (" + random.nextInt() + ",\"" + type + "\",CURDATE(), DATE_ADD(curdate(), INTERVAL 4 YEAR), \"0% for 15 months\", 0.15,null,30,0)";    
                     break;
                 default:        
             }

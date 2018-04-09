@@ -44,6 +44,7 @@ public class ComplaintGUI extends javax.swing.JFrame {
         ComplaintSubmitButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         fromField = new javax.swing.JTextField();
+        LoadButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,6 +68,13 @@ public class ComplaintGUI extends javax.swing.JFrame {
         });
 
         jLabel2.setText("From (ID)");
+
+        LoadButton.setText("Load");
+        LoadButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LoadButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,6 +106,8 @@ public class ComplaintGUI extends javax.swing.JFrame {
                 .addContainerGap(30, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(LoadButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ComplaintSubmitButton))
         );
         layout.setVerticalGroup(
@@ -116,9 +126,11 @@ public class ComplaintGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ComplaintSubmitButton)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ComplaintSubmitButton)
+                            .addComponent(LoadButton))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGap(31, 31, 31)
@@ -171,6 +183,38 @@ public class ComplaintGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ComplaintSubmitButtonActionPerformed
 
+    private void LoadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoadButtonActionPerformed
+        // TODO add your handling code here:
+        String From_int = fromField.getText();
+        String To_int = toField.getText();
+        
+        
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            String connectionURL =
+"jdbc:mysql://localhost:3306/RegalBank?autoReconnect=true&useSSL=false";
+            String query = "SELECT CO_Message where CU_ComplaintFrom = " + From_int + "AND CU_ComplaintTo = " + To_int;
+            Connection connection = DriverManager.getConnection(connectionURL, "root", "");
+            Statement statement = connection.createStatement();
+            ResultSet set = statement.executeQuery(query);
+
+            while (set.next()) {
+                
+                for ( int i = 1; i <=5; i++ ) {
+                    System.out.print(set.getString(i) + " "); 
+                }
+                System.out.println();
+             }
+            
+            connection.close();
+        } catch ( ClassNotFoundException e) {
+            System.out.println("ClassException");
+        } catch ( SQLException e) {
+            System.out.println("SQLEXCEPTION");
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_LoadButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -208,6 +252,7 @@ public class ComplaintGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ComplaintSubmitButton;
+    private javax.swing.JButton LoadButton;
     private javax.swing.JTextField fromField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
