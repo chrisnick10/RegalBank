@@ -88,12 +88,14 @@ CREATE TABLE `card` (
   `CR_Type` enum('Alpha','Bravo','Charlie','Delta','Echo','Foxtrot') NOT NULL,
   `CR_Assigned` date NOT NULL,
   `CR_Expiration` date NOT NULL,
-  `CR_APR` float(4,4) DEFAULT NULL,
   `CR_RewardRate` float(4,2) DEFAULT NULL,
   `CR_RewardBonus` double DEFAULT NULL,
   `CR_LateFee` double DEFAULT NULL,
-  `CR_AnnualFee` double DEFAULT NULL,
+  `CR_AnnualFee` varchar(5) DEFAULT NULL,
   `CR_AccountID` int(11) NOT NULL,
+  `CR_IntroAPR` varchar(40) DEFAULT NULL,
+  `CR_RegAPR` float(4,4) DEFAULT NULL,
+  `CR_Rating` enum('b','g','e') DEFAULT NULL,
   PRIMARY KEY (`CR_Number`),
   UNIQUE KEY `CR_Number` (`CR_Number`),
   KEY `FK_CardAccount` (`CR_AccountID`),
@@ -329,4 +331,4 @@ CREATE TABLE `transactioninfo` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-05 14:42:24
+-- Dump completed on 2018-04-09 10:36:56
