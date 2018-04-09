@@ -40,13 +40,17 @@ public class Utilities {
             for (int i = 0; i < inst.length; i++) {
                 if (!inst[i].trim().equals("")) {
                     String query = inst[i] + ";";
-                    System.out.println(query);
+                    Class.forName("com.mysql.jdbc.Driver");
+                    String connectionURL = "jdbc:mysql://localhost:3306/RegalBank?autoReconnect=true&useSSL=false";
+                    Connection connection = DriverManager.getConnection(connectionURL, "root", "");
+                    Statement statement = connection.createStatement();
+                    statement.executeUpdate(query);
                 }
             }
             
         } catch (Exception e) {
             System.out.println(e);
-        }
+        } 
     }
     
     public static Connection getConnection() throws SQLException, ClassNotFoundException {
