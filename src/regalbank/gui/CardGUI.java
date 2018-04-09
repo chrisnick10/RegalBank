@@ -18,6 +18,7 @@ import java.util.Random;
  */
 public class CardGUI extends javax.swing.JFrame {
 
+    private char credit_str;
     /**
      * Creates new form CardGUI
      */
@@ -34,6 +35,7 @@ public class CardGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         createButton = new javax.swing.JButton();
@@ -46,6 +48,12 @@ public class CardGUI extends javax.swing.JFrame {
         IDField = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         DeleteButton = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        BadButton = new javax.swing.JRadioButton();
+        GoodButton = new javax.swing.JRadioButton();
+        ExButton = new javax.swing.JRadioButton();
+        CardNumberField = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -74,6 +82,34 @@ public class CardGUI extends javax.swing.JFrame {
 
         DeleteButton.setText("Delete");
 
+        jLabel9.setText("Credit");
+
+        buttonGroup1.add(BadButton);
+        BadButton.setText("Bad");
+        BadButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BadButtonActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(GoodButton);
+        GoodButton.setText("Good");
+        GoodButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GoodButtonActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(ExButton);
+        ExButton.setText("Exellent");
+        ExButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Card Number");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -87,9 +123,9 @@ public class CardGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(28, 28, 28)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(CardBox, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(107, 107, 107)
+                        .addGap(129, 129, 129)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(AccountField)
@@ -100,14 +136,29 @@ public class CardGUI extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(LoadNum)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(IDField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(IDField, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(DeleteButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(createButton)))
                         .addGap(23, 23, 23))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel4))
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(BadButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(GoodButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ExButton))
+                    .addComponent(CardNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,9 +171,19 @@ public class CardGUI extends javax.swing.JFrame {
                     .addComponent(CardBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(AccountField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(GoodButton)
+                    .addComponent(BadButton)
+                    .addComponent(ExButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CardNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(createButton)
                     .addComponent(LoadNum)
@@ -138,6 +199,7 @@ public class CardGUI extends javax.swing.JFrame {
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
         // TODO add your handling code here:
         String type = (String) CardBox.getSelectedItem();
+        String Number = CardNumberField.getText();
         Random random = new Random();
         //ASsume only can modify type
         try {
@@ -149,28 +211,28 @@ public class CardGUI extends javax.swing.JFrame {
             
             switch (type) {
                 case "Alpha":
-                    insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_APR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID) "
-                    + "Values (" + random.nextInt() + ",\"" + type + "\",CURDATE(), CURDATE(), 0, 0, 100,100,100,100)";    
+                    insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_IntroAPR, CR_RegAGR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID, CR_Rating) "
+                    + "Values (" + Number + ",\"" + type + "\",CURDATE(), DateAdd(CURDATE(), INTERVAL 4 YEAR), \"0% APR for 12 months\", 0.15, null, 30,0,0,1," + credit_str + ")";    
                     break;
                 case "Bravo":
-                    insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_APR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID) "
-                    + "Values (" + random.nextInt() + ",\"" + type + "\",CURDATE(), CURDATE(), 0, 0, 100,100,100,100)";
+                    //insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_APR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID, CR_Rating) "
+                    //+ "Values (" + Number + ",\"" + type + "\",CURDATE(), DateAdd(CURDATE(), INTERVAL 4 YEAR), \"0% APR for 12 months\", 0.15, null, 30,0,0,1," + credit_str + ")";    
                     break;
                 case "Charlie":
-                    insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_APR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID) "
-                    + "Values (" + random.nextInt() + ",\"" + type + "\",CURDATE(), CURDATE(), 0, 0, 100,100,100,100)";
+                    //insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_APR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID,CR_Rating) "
+                    //+ "Values (" + Number + ",\"" + type + "\",CURDATE(), DateAdd(CURDATE(), INTERVAL 4 YEAR), \"0% APR for 12 months\", 0.15, null, 30,0,0,1,'g')";
                     break;
                 case "Delta":
-                    insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_APR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID) "
-                    + "Values (" + random.nextInt() + ",\"" + type + "\",CURDATE(), CURDATE(), 0, 0, 100,100,100,100)";
+                    //insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_APR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID,CR_Rating) "
+                    //+ "Values (" + Number + ",\"" + type + "\",CURDATE(), DateAdd(CURDATE(), INTERVAL 4 YEAR), \"0% APR for 12 months\", 0.15, null, 30,0,0,1,'g')";
                     break;
                 case "Echo":
-                    insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_APR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID) "
-                    + "Values (" + random.nextInt() + ",\"" + type + "\",CURDATE(), CURDATE(), 0, 0, 100,100,100,100)";
+                    //insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_APR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID,CR_Rating) "
+                    //+ "Values (" + Number + ",\"" + type + "\",CURDATE(), DateAdd(CURDATE(), INTERVAL 4 YEAR), \"0% APR for 12 months\", 0.15, null, 30,0,0,1,'g')";
                     break;
                 case "Foxtrot":
-                    insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_APR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID) "
-                    + "Values (" + random.nextInt() + ",\"" + type + "\",CURDATE(), CURDATE(), 0, 0, 100,100,100,100)";
+                    //insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_APR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID,CR_Rating) "
+                    //+ "Values (" + Number + ",\"" + type + "\",CURDATE(), DateAdd(CURDATE(), INTERVAL 4 YEAR), \"0% APR for 12 months\", 0.15, null, 30,0,0,1,'g')";
                     break;
                 default:        
             }
@@ -199,6 +261,21 @@ public class CardGUI extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_createButtonActionPerformed
+
+    private void BadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BadButtonActionPerformed
+        // TODO add your handling code here:
+        credit_str = 'b';
+    }//GEN-LAST:event_BadButtonActionPerformed
+
+    private void GoodButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GoodButtonActionPerformed
+        // TODO add your handling code here:
+        credit_str = 'g';
+    }//GEN-LAST:event_GoodButtonActionPerformed
+
+    private void ExButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExButtonActionPerformed
+        // TODO add your handling code here:
+        credit_str = 'e';
+    }//GEN-LAST:event_ExButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -237,15 +314,22 @@ public class CardGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AccountField;
+    private javax.swing.JRadioButton BadButton;
     private javax.swing.JComboBox<String> CardBox;
+    private javax.swing.JTextField CardNumberField;
     private javax.swing.JButton DeleteButton;
+    private javax.swing.JRadioButton ExButton;
+    private javax.swing.JRadioButton GoodButton;
     private javax.swing.JTextField IDField;
     private javax.swing.JButton LoadNum;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton createButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea textArea;
     // End of variables declaration//GEN-END:variables
