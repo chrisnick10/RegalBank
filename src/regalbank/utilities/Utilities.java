@@ -39,7 +39,8 @@ public class Utilities {
             // trim the whitespaces
             for (int i = 0; i < inst.length; i++) {
                 if (!inst[i].trim().equals("")) {
-                    System.out.println(inst[i]);
+                    String query = inst[i] + ";";
+                    System.out.println(query);
                 }
             }
             
