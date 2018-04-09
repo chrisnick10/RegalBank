@@ -85,25 +85,25 @@ public class ComplaintGUI extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(18, 18, 18)
-                                .addComponent(jScrollPane1))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel2))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(fromField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jLabel3)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(toField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(toField))
                                     .addComponent(subjectField))))))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(LoadButton)
@@ -193,19 +193,21 @@ public class ComplaintGUI extends javax.swing.JFrame {
             Class.forName("com.mysql.jdbc.Driver");
             String connectionURL =
 "jdbc:mysql://localhost:3306/RegalBank?autoReconnect=true&useSSL=false";
-            String query = "Select * FROM COMPLAINT WHERE CU_ComplaintTo = " + To_int + "AND CU_ComplaintFrom = " + From_int;
+            String query = "Select CO_Subject, CO_Message, CO_DATE FROM COMPLAINT WHERE CO_ComplaintTo = " + To_int + " AND CO_ComplaintFrom = " + From_int;
             Connection connection = DriverManager.getConnection(connectionURL, "root", "");
             Statement statement = connection.createStatement();
             ResultSet set = statement.executeQuery(query);
             
+            String Result = "";
             while (set.next()) {
                 
-                for ( int i = 1; i <=5; i++ ) {
-                    System.out.print(set.getString(i) + " "); 
+                for ( int i = 1; i <=3; i++ ) {
+                    if (i >=1) Result += set.getString(i) + " "; 
                 }
-                System.out.println();
+                Result += "\n";
              }
             
+            messageField.setText(Result);
             connection.close();
         } catch ( ClassNotFoundException e) {
             System.out.println("ClassException");
