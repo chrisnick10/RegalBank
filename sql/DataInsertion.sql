@@ -201,7 +201,7 @@ CREATE TABLE `transactioninfo` (
 set foreign_key_checks = 1;
 
 
-insert into login (LG_Username, LG_Password, LG_Question, LG_Answer, LG_ProfilePic, LG_Type) values ("admin1", "password", "what is your dad's name?", "James", NULL, "admin");
+insert into login (LG_Username, LG_Password, LG_Question, LG_Answer, LG_ProfilePic, LG_Type) values ("admin", "password", "what is your dad's name?", "James", NULL, "admin");
 insert into login (LG_Username, LG_Password, LG_Question, LG_Answer, LG_ProfilePic, LG_Type) values ("christian", "password", "what is your dog's name?", "Luke", "NULL", "employee");
 insert into login (LG_Username, LG_Password, LG_Question, LG_Answer, LG_ProfilePic, LG_Type) values ("daniel", "password", "question about yourself", "idk", NULL, "employee");
 insert into login (LG_Username, LG_Password, LG_Question, LG_Answer, LG_ProfilePic, LG_Type) values ("lauren", "password", "question about yourself", "idk", NULL, "employee");
@@ -238,11 +238,9 @@ INSERT INTO employee (E_ID,E_FName,E_MName,E_LName,E_Number,E_Street,E_ZIP,E_Cit
 INSERT INTO employee (E_ID,E_FName,E_MName,E_LName,E_Number,E_Street,E_ZIP,E_City,E_State,E_Phone,E_Title,E_Salary,E_BranchID,E_DOB,E_DateOfJoin,E_Username) VALUES (3,"Vance","Steel","Wang","268","Vitae Ave","65239","New Orleans","LA","3047432932","Teller","419379.17",2,"2002-07-06","1985-07-11","lauren");
 
 
-
-
-insert into timelog (TL_ID, TL_Employee, TL_CheckOut, TL_CheckIn) values (1, "1", NULL, curtime());
-
-
+insert into timelog (TL_ID, TL_Employee, TL_CheckOut, TL_CheckIn) values (1, "1", NULL, "2018-04-01 9:00:00");
+insert into timelog (TL_ID, TL_Employee, TL_CheckOut, TL_CheckIn) values (2, "1", "2018-04-01 3:00:00", NULL);
+insert into timelog (TL_ID, TL_Employee, TL_CheckOut, TL_CheckIn) values (2, "2", NULL, "2018-04-09 8:00:00");
 
 Insert into AccountInfo(A_AccountID, A_Balance, A_Interest, A_Overdraft, A_LastAccess, A_AccountType, A_Date) values (1, 1000, 0.1, 9000, curdate(), 'checking', '2011-01-28');
 Insert into AccountInfo(A_AccountID, A_Balance, A_Interest, A_Overdraft, A_LastAccess, A_AccountType, A_Date) values (2, 12000, 0.4, 30000, curdate(), 'checking', '2000-01-28');
