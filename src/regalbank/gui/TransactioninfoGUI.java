@@ -216,8 +216,6 @@ public class TransactioninfoGUI extends javax.swing.JFrame {
         
         String insertTrans = "INSERT into Transactioninfo (T_AccountID, T_Mode, T_Balance, T_Date, T_Type, T_Remarks) values (\'"
                 +transAccountID_str+"\',\'"+transMode_str+"\',\'"+transBalance_str+"\',\'"+transDate_str+"\',\'"+transType_str+"\',\'"+transRemarks_str+"\');";
-       
-        
         
         try{
             Statement stmt = LoginGUI.getConnection().createStatement();
