@@ -47,7 +47,7 @@ public class PerformanceGUI extends javax.swing.JFrame {
         perfUpdateButton = new javax.swing.JButton();
         perfDeleteButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Input Performance Information");
 
