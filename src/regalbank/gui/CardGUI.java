@@ -46,7 +46,6 @@ public class CardGUI extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         LoadNum = new javax.swing.JButton();
         IDField = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         DeleteButton = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         BadButton = new javax.swing.JRadioButton();
@@ -83,9 +82,12 @@ public class CardGUI extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Update");
-
         DeleteButton.setText("Delete");
+        DeleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteButtonActionPerformed(evt);
+            }
+        });
 
         jLabel9.setText("Credit");
 
@@ -142,9 +144,7 @@ public class CardGUI extends javax.swing.JFrame {
                                 .addComponent(LoadNum)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(IDField, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(88, 88, 88)
                                 .addComponent(DeleteButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(createButton)))
@@ -193,7 +193,6 @@ public class CardGUI extends javax.swing.JFrame {
                     .addComponent(createButton)
                     .addComponent(LoadNum)
                     .addComponent(IDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1)
                     .addComponent(DeleteButton))
                 .addContainerGap())
         );
@@ -205,6 +204,7 @@ public class CardGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         String type = (String) CardBox.getSelectedItem();
         String Number = CardNumberField.getText();
+        String ID = AccountField.getText();
         Random random = new Random();
         //ASsume only can modify type
         try {
@@ -217,27 +217,27 @@ public class CardGUI extends javax.swing.JFrame {
            switch (type) {
                 case "Alpha":
                     insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_IntroAPR, CR_RegAPR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID,CR_Rating) "
-                    + "Values (" + Number + ",\"" + type + "\",CURDATE(), DATE_ADD(curdate(), INTERVAL 4 YEAR), \"0% for 12 months\", 0.15,null,30,0,0,1,\'" + credit_str + "\')";      
+                    + "Values (" + Number + ",\"" + type + "\",CURDATE(), DATE_ADD(curdate(), INTERVAL 4 YEAR), \"0% for 12 months\", 0.15,null,30,0,0," + ID + ",\'" + credit_str + "\')";      
                     break;
                 case "Bravo":
                     insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_IntroAPR, CR_RegAPR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID,CR_Rating) "
-                    + "Values (" + Number + ",\"" + type + "\",CURDATE(), DATE_ADD(curdate(), INTERVAL 4 YEAR), \"0% for 12 months\", 0.15,1,40,0,0,1,\'" + credit_str + "\')"; 
+                    + "Values (" + Number + ",\"" + type + "\",CURDATE(), DATE_ADD(curdate(), INTERVAL 4 YEAR), \"0% for 12 months\", 0.15,1,40,0,0," + ID + ",\'" + credit_str + "\')"; 
                     break;
                 case "Charlie":
                    insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_IntroAPR, CR_RegAPR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID,CR_Rating) "
-                    + "Values (" + Number + ",\"" + type + "\",CURDATE(), DATE_ADD(curdate(), INTERVAL 4 YEAR), \"0% for 15 months\", 0.15,3,35,150,0,1,\'" + credit_str + "\')"; 
+                    + "Values (" + Number + ",\"" + type + "\",CURDATE(), DATE_ADD(curdate(), INTERVAL 4 YEAR), \"0% for 15 months\", 0.15,3,35,150,0," + ID + ",\'" + credit_str + "\')"; 
                     break;
                 case "Delta":
                     insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_IntroAPR, CR_RegAPR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID,CR_Rating) "
-                    + "Values (" + Number + ",\"" + type + "\",CURDATE(), DATE_ADD(curdate(), INTERVAL 4 YEAR), \"0% for 12 months\", 0.14,3,30,0,0,1,\'" + credit_str + "\')"; 
+                    + "Values (" + Number + ",\"" + type + "\",CURDATE(), DATE_ADD(curdate(), INTERVAL 4 YEAR), \"0% for 12 months\", 0.14,3,30,0,0," + ID + ",\'" + credit_str + "\')"; 
                     break;
                 case "Echo":
                    insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_IntroAPR, CR_RegAPR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID,CR_Rating) "
-                    + "Values (" + Number + ",\"" + type + "\",CURDATE(), DATE_ADD(curdate(), INTERVAL 4 YEAR), \"0% for 12 months\", 0.14,3,10,150,38,1,\'" + credit_str + "\')"; 
+                    + "Values (" + Number + ",\"" + type + "\",CURDATE(), DATE_ADD(curdate(), INTERVAL 4 YEAR), \"0% for 12 months\", 0.14,3,10,150,38," + ID + ",\'" + credit_str + "\')"; 
                    break;
                 case "Foxtrot":
                     insert = "INSERT INTO CARD (CR_Number, CR_Type,CR_Assigned,CR_Expiration,CR_IntroAPR, CR_RegAPR,CR_RewardRate,CR_RewardBonus,CR_LateFee,CR_AnnualFee,CR_AccountID,CR_Rating) "
-                    + "Values (" + Number + ",\"" + type + "\",CURDATE(), DATE_ADD(curdate(), INTERVAL 4 YEAR), \"0% for 15 months\", 0.16,1.5,30,150,0,1,\'" + credit_str + "\')"; 
+                    + "Values (" + Number + ",\"" + type + "\",CURDATE(), DATE_ADD(curdate(), INTERVAL 4 YEAR), \"0% for 15 months\", 0.16,1.5,30,150,0," + ID + ",\'" + credit_str + "\')"; 
                    break;
                 default:        
             }
@@ -250,15 +250,7 @@ public class CardGUI extends javax.swing.JFrame {
             ResultSet set = statement.executeQuery(result);
             
             System.out.println("Executed Query");
-            String boxString = " ";
-            while (set.next()) {
-                
-                for ( int i = 1; i <=9; i++ ) {
-                    boxString = boxString + set.getString(i) + " "; 
-                }
-                boxString = boxString + "\n";
-             }
-            connection.close();
+
         } catch ( ClassNotFoundException e) {
             System.out.println("ClassException");
         } catch ( SQLException e) {
@@ -284,8 +276,72 @@ public class CardGUI extends javax.swing.JFrame {
 
     private void LoadNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoadNumActionPerformed
         // TODO add your handling code here:
-        
+        try { 
+            Class.forName("com.mysql.jdbc.Driver");
+            String connectionURL =
+"jdbc:mysql://localhost:3306/RegalBank?autoReconnect=true&useSSL=false";
+            Connection connection = DriverManager.getConnection(connectionURL, "root", "");
+            Statement statement = connection.createStatement();      
+            String query = "select CR_Rating, CR_AccountID, CR_Type from Card where CR_Number = \"" + IDField.getText() + "\"";
+            ResultSet set = statement.executeQuery(query);
+            
+            while (set.next()) {
+                String credit_str = set.getString(1);
+                switch(credit_str) {
+                    case "b" :  BadButton.doClick();
+                                    break;
+                    case "g" :  GoodButton.doClick();
+                                    break;
+                    case "e" :  ExButton.doClick();
+                                    break;
+                    default : 
+                }
+                AccountField.setText(set.getString(2));
+                CardNumberField.setText(set.getString(3));      
+             }
+            
+            String result = "SELECT * from Card WHERE CR_NUMBER =" + IDField.getText();
+            set = statement.executeQuery(result);
+
+            System.out.println("Executed Query");
+            String boxString = " ";
+            while (set.next()) {
+                
+                for ( int i = 1; i <=9; i++ ) {
+                    boxString = boxString + set.getString(i) + " "; 
+                }
+                boxString = boxString + "\n";
+             }
+            textArea.setText(boxString);
+            
+           connection.close();
+        } catch ( ClassNotFoundException e) {
+            System.out.println("ClassException");
+        } catch ( SQLException e) {
+            System.out.println("SQLEXCEPTION");
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_LoadNumActionPerformed
+
+    private void DeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteButtonActionPerformed
+        // TODO add your handling code here:
+        try { 
+            Class.forName("com.mysql.jdbc.Driver");
+            String connectionURL =
+"jdbc:mysql://localhost:3306/RegalBank?autoReconnect=true&useSSL=false";
+            Connection connection = DriverManager.getConnection(connectionURL, "root", "");
+            Statement statement = connection.createStatement();      
+            String delete = "DELETE FROM Card WHERE CR_Number = \"" + IDField.getText() + "\"";
+            statement.executeUpdate(delete);
+            
+           connection.close();
+        } catch ( ClassNotFoundException e) {
+            System.out.println("ClassException");
+        } catch ( SQLException e) {
+            System.out.println("SQLEXCEPTION");
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_DeleteButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -334,7 +390,6 @@ public class CardGUI extends javax.swing.JFrame {
     private javax.swing.JButton LoadNum;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton createButton;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
