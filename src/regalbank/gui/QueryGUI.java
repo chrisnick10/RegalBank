@@ -8,8 +8,10 @@ package regalbank.gui;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Arrays;
 
 /**
  *
@@ -129,19 +131,26 @@ public class QueryGUI extends javax.swing.JFrame {
             
             Connection connection = DriverManager.getConnection(connectionURL, "root", "");
             Statement statement = connection.createStatement();
-            statement.executeUpdate(query);
+            //statement.executeUpdate(query);
             
-            String result = "select * from Customer";
-            ResultSet set = statement.executeQuery(result);
+            //String result = "select * from Customer";
+            ResultSet set = statement.executeQuery(query);
+            ResultSetMetaData setMetaData = set.getMetaData();
+            int columns = setMetaData.getColumnCount();
             
             System.out.println("Executed Query");
             String boxString = " ";
+            String[] names = new String[columns];
+            for (int i = 1; i <= setMetaData.getColumnCount(); i++) {
+                names[i-1] = setMetaData.getColumnName(i);
+            }
+            ResultBox.setText(Arrays.toString(names));
             while (set.next()) {
-                
-                for ( int i = 1; i <=9; i++ ) {
-                    boxString = boxString + set.getString(i) + " "; 
-                }
-                boxString = boxString + "\n";
+                Object[] values = new Object[columns];
+                for (int i = 1; i <= setMetaData.getColumnCount(); i++) {
+                    values[i-1] = set.getObject(i);
+                } 
+                ResultBox.setText(ResultBox.getText() + "\n" + Arrays.toString(values));
              }
             connection.close();
         } catch ( ClassNotFoundException e) {
@@ -162,18 +171,15 @@ public class QueryGUI extends javax.swing.JFrame {
             
             Connection connection = DriverManager.getConnection(connectionURL, "root", "");
             Statement statement = connection.createStatement();
-            //ResultSet set = statement.executeUpdate(query);
- 
+            int i = statement.executeUpdate(query);
+            if (i > 0) {
+                ResultBox.setText("Executed Query");
+            }
+            else {
+                ResultBox.setText("Query not executed");
+            }
             
             System.out.println("Executed Query");
-            String boxString = " ";
-            /*while (set.next()) {
-                
-                for ( int i = 1; i <=9; i++ ) {
-                    boxString = boxString + set.getString(i) + " "; 
-                }
-                boxString = boxString + "\n";
-             }*/
             connection.close();
         } catch ( ClassNotFoundException e) {
             System.out.println("ClassException");
