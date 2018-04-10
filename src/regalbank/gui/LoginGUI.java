@@ -46,7 +46,6 @@ public class LoginGUI extends javax.swing.JFrame {
         PasswordField = new javax.swing.JTextField();
         PasswordLabel = new javax.swing.JLabel();
         LoginButton = new javax.swing.JButton();
-        loadDataButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,13 +60,6 @@ public class LoginGUI extends javax.swing.JFrame {
         LoginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LoginButtonActionPerformed(evt);
-            }
-        });
-
-        loadDataButton.setText("Load Data");
-        loadDataButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loadDataButtonActionPerformed(evt);
             }
         });
 
@@ -88,9 +80,7 @@ public class LoginGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(loadDataButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(LoginButton))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)
@@ -110,9 +100,7 @@ public class LoginGUI extends javax.swing.JFrame {
                     .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(PasswordLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LoginButton)
-                    .addComponent(loadDataButton))
+                .addComponent(LoginButton)
                 .addContainerGap())
         );
 
@@ -157,11 +145,6 @@ public class LoginGUI extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_LoginButtonActionPerformed
-
-    private void loadDataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadDataButtonActionPerformed
-        // TODO add your handling code here:
-        Utilities.insertData();
-    }//GEN-LAST:event_loadDataButtonActionPerformed
 
     public static Connection getConnection() throws ClassNotFoundException,SQLException {
         if ( c == null ) {
@@ -216,7 +199,6 @@ public class LoginGUI extends javax.swing.JFrame {
     private javax.swing.JTextField PasswordField;
     private javax.swing.JLabel PasswordLabel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JButton loadDataButton;
     // End of variables declaration//GEN-END:variables
 
 }
