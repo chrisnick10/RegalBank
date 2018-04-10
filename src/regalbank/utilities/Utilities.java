@@ -8,6 +8,7 @@ package regalbank.utilities;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.sql.*;
+import regalbank.gui.LoginGUI;
 
 /**
  *
@@ -33,17 +34,14 @@ public class Utilities {
             
             //splitter 
             String[] inst = sb.toString().split(";");
-            Connection c = getConnection();
+            Connection c = LoginGUI.getConnection();
             Statement  st = c.createStatement();
             
             // trim the whitespaces
             for (int i = 0; i < inst.length; i++) {
                 if (!inst[i].trim().equals("")) {
                     String query = inst[i] + ";";
-                    Class.forName("com.mysql.jdbc.Driver");
-                    String connectionURL = "jdbc:mysql://localhost:3306/RegalBank?autoReconnect=true&useSSL=false";
-                    Connection connection = DriverManager.getConnection(connectionURL, "root", "");
-                    Statement statement = connection.createStatement();
+                    
                     st.executeUpdate(query);
                 }
             }
