@@ -44,7 +44,7 @@ public class Utilities {
                     String connectionURL = "jdbc:mysql://localhost:3306/RegalBank?autoReconnect=true&useSSL=false";
                     Connection connection = DriverManager.getConnection(connectionURL, "root", "");
                     Statement statement = connection.createStatement();
-                    statement.executeUpdate(query);
+                    st.executeUpdate(query);
                 }
             }
             
